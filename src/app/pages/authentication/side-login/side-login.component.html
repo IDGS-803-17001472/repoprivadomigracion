@@ -5,30 +5,12 @@
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
-              <img src="./assets/images/logos/dark-logo.svg" class="align-middle m-2" alt="logo" />
+              <img src="./assets/images/logos/logo3.png" class="align-middle m-2" alt="logo" width="60%" />
             </a>
           </div>
 
-          <div class="row m-t-24 custom-row">
-            <div class="col-12 col-sm-6">
-              <button mat-stroked-button class="w-100">
-                <div class="d-flex align-items-center">
-                  <img src="/assets/images/svgs/google-icon.svg" alt="google" width="16" class="m-r-8" />
-                  Sign in with Google
-                </div>
-              </button>
-            </div>
-            <div class="col-12 col-sm-6">
-              <button mat-stroked-button class="w-100 d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <img src="/assets/images/svgs/facebook-icon.svg" alt="facebook" width="40" class="m-r-4" />
-                  Sign in with FB
-                </div>
-              </button>
-            </div>
-          </div>
 
-          <div class="or-border m-t-30">or sign in with</div>
+          <div class="or-border m-t-30">Iniciar Sesión</div>
 
           <form class="m-t-30"   [formGroup]="form"  (ngSubmit)="login()">
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
@@ -42,7 +24,6 @@
             </mat-form-field>
 
             <div class="d-flex align-items-center m-b-12">
-              <mat-checkbox color="primary">Remember this Device</mat-checkbox>
               <a [routerLink]="['/']" class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">Forgot Password
                 ?</a>
             </div>
@@ -51,9 +32,9 @@
             </button>
             <!-- input -->
           </form>
-          <span class="d-block f-w-500 text-center m-t-24">New to Modernize?
+          <span class="d-block f-w-500 text-center m-t-24">Nuevo en FeelFinder?
             <a [routerLink]="['/authentication/register']" class="text-decoration-none text-primary f-w-500 f-s-14">
-              Create an account</a>
+              Crear una cuenta</a>
           </span>
         </mat-card-content>
       </mat-card>

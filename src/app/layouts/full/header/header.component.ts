@@ -26,6 +26,7 @@ export class HeaderComponent {
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
+   imgSrc: string;
 
   @Input() showToggle = true;
   @Input() toggleChecked = false;
@@ -33,6 +34,11 @@ export class HeaderComponent {
   @Output() toggleMobileFilterNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
+
+  
+  ngOnInit() {
+    this.getData();
+  }
 
   logout = () => {
     this.authService.logout();
@@ -42,5 +48,20 @@ export class HeaderComponent {
     });
     this.router.navigate(['/authentication/login']);
   };
+
+  getData() {
+    this.authService.getDetail().subscribe({
+        next: (response) => {
+            console.log('Lista de data:', response);
+            this.imgSrc = response.foto;
+        },
+        error: (error) => {
+            this.matSnackBar.open(error.error.message, 'Close', {
+                duration: 5000,
+                horizontalPosition: 'center',
+            });
+        },
+    });
+}
 }
 

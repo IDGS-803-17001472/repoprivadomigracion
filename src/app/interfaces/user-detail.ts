@@ -7,4 +7,5 @@ export interface UserDetail {
     twoFacotrEnabled: true;
     phoneNumberConfirmed: true;
     accessFailedCount: 0;
+    foto : string
   }

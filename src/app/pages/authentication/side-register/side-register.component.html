@@ -5,55 +5,163 @@
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
-              <img src="./assets/images/logos/dark-logo.svg" class="align-middle m-2" alt="logo" />
+              <img src="./assets/images/logos/logo3.png" class="align-middle m-2" alt="logo" width="60%" />
             </a>
           </div>
 
-          <div class="row m-t-24 custom-row">
-            <div class="col-12 col-sm-6">
-              <button mat-stroked-button class="w-100">
-                <div class="d-flex align-items-center">
-                  <img src="/assets/images/svgs/google-icon.svg" alt="google" width="16" class="m-r-8" />
-                  Sign in with Google
-                </div>
-              </button>
-            </div>
-            <div class="col-12 col-sm-6">
-              <button mat-stroked-button class="w-100 d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <img src="/assets/images/svgs/facebook-icon.svg" alt="facebook" width="40" class="m-r-4" />
-                  Sign in with FB
-                </div>
-              </button>
-            </div>
-          </div>
+          <div class=" text-center m-t-30">Introduce tus datos para  crear una cuenta de profesional de la salud.</div>
+          <hr size="1" color="#e0e0e0" />
 
-          <div class="or-border m-t-30">or sign up with</div>
-
-          <form class="m-t-30">
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Name</mat-label>
+          <form class="m-t-30" [formGroup]="registerForm" (ngSubmit)="register()" enctype="multipart/form-data">
+            <div *ngIf="currentSection === 1">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput />
+              <input matInput formControlName="nombre" required />
+              <mat-error *ngIf="registerForm.controls['nombre'].hasError('required')">
+                El nombre es obligatorio
+              </mat-error>
             </mat-form-field>
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email Adddress</mat-label>
+            <div class="row">
+              <div class="col-6">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Primer apellido</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="email" />
+              <input matInput formControlName="apellidoPaterno" required />
+              <mat-error *ngIf="registerForm.controls['apellidoPaterno'].hasError('required')">
+                El apellido es obligatorio
+              </mat-error>
             </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Segundo apellido</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput  matInput formControlName="apellidoMaterno" />
+                </mat-form-field>
+              </div>
+            </div>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Correo electrónico</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput type="email"  formControlName="email" required/>
+              <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                El correo electrónico es obligatorio
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['email'].hasError('email')">
+                Ingrese un correo electrónico válido
+              </mat-error>
+            </mat-form-field>
+            </div>
+            <div *ngIf="currentSection === 2">
             <!-- password -->
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Contraseña</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="password" />
+              <input matInput type="password"  formControlName="password" required/>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                La contraseña es obligatoria
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') && registerForm.controls['password'].touched">
+                La contraseña debe tener al menos 8 caracteres
+              </mat-error>
             </mat-form-field>
+            <!-- confirm password -->
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Confirmar contraseña</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput type="password" formControlName="confirmPassword" required/>
+              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+                La contraseña es obligatoria
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerForm.controls['confirmPassword'].touched">
+                La contraseña es requerida y debe tener al menos 8 caracteres
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('mismatch') && registerForm.controls['confirmPassword'].touched">
+                Las contraseñas deben coincidir
+              </mat-error>
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Teléfono</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <input matInput formControlName="telefono" required/>
+              <mat-error *ngIf="registerForm.controls['telefono'].hasError('required')">
+                El teléfono es obligatorio
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['telefono'].hasError('pattern')">
+                Formato del teléfono incorrecto
+              </mat-error>
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Fecha de nacimiento</mat-label>
+            <mat-form-field class="form-field">
+              <mat-hint>MM/DD/AAAA</mat-hint>
+                <input matInput [matDatepicker]="fechaNacimiento" formControlName="fechaNacimiento" required placeholder="Fecha de Nacimiento">
+                <mat-datepicker-toggle matIconSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+                <mat-datepicker #fechaNacimiento></mat-datepicker>
+            <mat-error *ngIf="registerForm.controls['fechaNacimiento'].hasError('required')">
+              Fecha de nacimiento obligatoria
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <br />
+        </div>
+        <div *ngIf="currentSection === 3">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Género</mat-label>
+          <mat-radio-group formControlName="sexo">
+            <mat-radio-button value="female">Femenino</mat-radio-button>
+            <mat-radio-button value="male">Masculino</mat-radio-button>
+            <mat-radio-button value="other">Otro</mat-radio-button>
+          </mat-radio-group>
+          
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Estado civil</mat-label>
+          <mat-radio-group formControlName="estadoCivil">
+            <mat-radio-button value="casado">Casado</mat-radio-button>
+            <mat-radio-button value="soltero">Soltero</mat-radio-button>
+            <mat-radio-button value="separado">Separado</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div *ngIf="currentSection === 4">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Dirección</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput formControlName="address"/>
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Ocupación</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput formControlName="ocupacion"/>
+          </mat-form-field>
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Título</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput  formControlName="titulo"/>
+          </mat-form-field>
+          <label>Foto de Perfil</label><br />
+          <input
+          type="file"
+          class="file-upload"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+        />
+          <br />
+          <br />
 
-            <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
-              Sign Up
-            </a>
+          </div>
+
+            <div *ngIf="currentSection > 1">
+              <a  (click)="previousSection()" mat-flat-button color="primary" class="w-100">
+                Anterior
+              </a>
+              <br />
+              <br />
+            </div>
+            <div *ngIf="currentSection === 4">
+            <button type="submit" mat-flat-button color="primary" class="w-100">
+              Registrarse
+            </button>
+            </div>
+            <div *ngIf="currentSection !== 4">
+              <a  (click)="nextSection()" mat-flat-button color="primary" class="w-100">
+                Siguiente
+              </a>
+            </div>
+
             <!-- input -->
           </form>
-          <span class="d-block f-w-500 text-center m-t-24">Already have an Account?
+          <span class="d-block f-w-500 text-center m-t-24">Ya tienes una cuenta?
 
             <a [routerLink]="['/authentication/login']" class="text-decoration-none text-primary f-w-500 f-s-14">
-              Sign In</a>
+              Inicia Sesión</a>
           </span>
         </mat-card-content>
       </mat-card>

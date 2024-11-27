@@ -20,9 +20,10 @@
     target="_blank" class="d-flex justify-content-center">
     Download Free
   </a>
-  <button mat-icon-button [matMenuTriggerFor]="profilemenu" aria-label="Notifications">
-    <img src="/assets/images/profile/user-1.jpg" class="rounded-circle object-cover" width="35" />
-  </button>
+  <button mat-icon-button [matMenuTriggerFor]="profilemenu" aria-label="Notifications" class="justify-content-center align-items-center d-flex"
+  style="width: 70px; height: 70px; padding: 0;">
+  <img src={{imgSrc}} class="rounded-circle object-cover" style="width: 90%; height: 90%;"/>
+</button>
   <mat-menu #profilemenu="matMenu" class="cardWithShadow">
     <button mat-menu-item>
       <mat-icon class="d-flex align-items-center"><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon>My
