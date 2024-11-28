@@ -143,7 +143,7 @@ export class AppSideRegisterComponent {
           duration: 5000,
           horizontalPosition: 'center',
         });
-        this.router.navigate(['/login']);
+        this.router.navigate(['/authentication/login']);
       },
       error: (err: HttpErrorResponse) => {
         if (err!.status === 400) {

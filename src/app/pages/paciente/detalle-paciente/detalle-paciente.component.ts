@@ -8,13 +8,30 @@ import { Cita } from '../../../interfaces/cita';
 import { PacienteService } from '../../../services/paciente.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdatePacienteDto } from '../../../interfaces/UpdatePacienteDto';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
+import { MatList, MatListItem } from '@angular/material/list';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-detalle-paciente',
   standalone: true,
   imports: [FormsModule, RouterLink, CommonModule,
-    MatCardModule
+    MatCardModule, MatListItem, MatList, MatFormField,
+    MatLabel, MatSelectModule,
+    CommonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepicker,
+    MatButtonModule,
   ],  
   templateUrl: './detalle-paciente.component.html',
   styleUrl: './detalle-paciente.component.scss'
