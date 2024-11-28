@@ -107,6 +107,29 @@ export class PacienteComponent {
   }
 
 
+  seleccionarPaciente(paciente: Paciente) {
+    if (paciente && paciente.idPaciente) {
+      console.log(paciente)
+      this.router.navigate(['paciente/detalle', paciente.idPaciente]);
+    } else {
+      console.error('Paciente o ID de paciente no definido:', paciente);
+      // Manejar el error de forma adecuada
+    }
+  }
+
+
+  getAge(dateString : string) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+
   listaPacientePsicologo() {
     this.authService.getPacientePsicologo().subscribe({
         next: (response) => {

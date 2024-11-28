@@ -1,0 +1,140 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Detalles del Paciente</mat-card-title>
+  
+    <div class="row">
+      <!-- Información del Paciente -->
+      <div class="col-md-6">
+        <div *ngIf="editMode" class="mb-4">
+          <h4>Editar Paciente</h4>
+          <form (ngSubmit)="guardarCambios()" #pacienteForm="ngForm">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" id="nombre" class="form-control" [(ngModel)]="paciente!.nombre" name="nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="form-label">Apellido Materno</label>
+              <input type="text" id="apellidoMaterno" class="form-control" [(ngModel)]="paciente!.apellidoMaterno" name="apellidoMaterno" required>
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="form-label">Apellido Paterno</label>
+              <input type="text" id="apellidoPaterno" class="form-control" [(ngModel)]="paciente!.apellidoPaterno" name="apellidoPaterno" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Fecha de Nacimiento</label>
+              <input type="date" id="birthdate" class="form-control" [(ngModel)]="paciente!.fechaDisplay" name="birthdate" required>
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="phone" id="birthdate" class="form-control" [(ngModel)]="paciente!.telefono" name="telefono" required>
+            </div>
+  
+          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+            <div class="mb-0 me-4" style="color: #6a1b9a;">Genero: </div>
+            <div class="form-check form-check-inline mb-0 me-4">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.sexo"  type="radio" name="sexo" id="femaleGender" value="female" />
+              <label class="form-check-label" for="femaleGender">Femenino</label>
+            </div>
+            <div class="form-check form-check-inline mb-0 me-4">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.sexo"  type="radio" name="sexo" id="maleGender" value="male" />
+              <label class="form-check-label" for="maleGender">Masculino</label>
+            </div>
+            <div class="form-check form-check-inline mb-0">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.sexo"  type="radio" name="sexo" id="otherGender" value="other" />
+              <label class="form-check-label" for="otherGender">Otro</label>
+            </div>
+          </div>
+  
+          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+            <div class="mb-0 me-4" style="color: #6a1b9a;">Estado Civil: </div>
+            <div class="form-check form-check-inline mb-0 me-4">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.estadoCivil"  type="radio" name="estadoCivil" id="solteroEC" value="female" />
+              <label class="form-check-label" for="solteroEC">Soltero</label>
+            </div>
+            <div class="form-check form-check-inline mb-0 me-4">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.estadoCivil"  type="radio" name="estadoCivil" id="casadoEC" value="male" />
+              <label class="form-check-label" for="casadoEC">Casado</label>
+            </div>
+            <div class="form-check form-check-inline mb-0">
+              <input class="form-check-input"
+              [(ngModel)]="paciente!.estadoCivil"  type="radio" name="estadoCivil" id="separadoEC" value="other" />
+              <label class="form-check-label" for="separadoEC">Separado</label>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="ocupacion" class="form-label">Ocupacion</label>
+            <input type="text" id="ocupacion" class="form-control"  [(ngModel)]="paciente!.ocupacion" name="ocupacion" required>
+          </div>
+          <div class="mb-3">
+            <label for="notasAdicionales" class="form-label">Notas Adicionales</label>
+            <input type="text" id="notasAdicionales" class="form-control"  [(ngModel)]="paciente!.notasAdicionales" name="notasAdicionales" >
+          </div>
+  
+  
+  
+  
+            <button type="submit" class="btn btn-primary" (click)="guardarCambios()">Guardar Cambios</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="cancelarEdicion()">Cancelar</button>
+          </form>
+        </div>
+  
+        <div *ngIf="!editMode" class="mb-4">
+          <h4>Paciente</h4>
+          <p><strong>Nombre:</strong> {{ paciente?.nombre + " " + paciente?.apellidoMaterno + " " + paciente?.apellidoPaterno}}</p>
+          <p><strong>Edad:</strong> {{ paciente?.edad }}</p>
+          <p><strong>Ocupación:</strong> {{ paciente?.ocupacion }}</p>
+          <p><strong>Teléfono:</strong> {{ paciente?.telefono }}</p>
+          <p><strong>Fecha de Registro:</strong> {{ paciente?.fechaRegistro }}</p>
+          <button class="btn btn-warning btn-sm me-2" (click)="activarEdicion()">
+            <i class="bi bi-pencil"></i> Modificar Paciente
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarPaciente()">
+            <i class="bi bi-trash"></i> Eliminar Paciente
+          </button>
+        </div>
+      </div>
+  
+      <!-- Citas del Paciente -->
+      <div class="col-md-6">
+        <h4>Citas</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cita of citas">
+              <td>{{ cita.fecha }}</td>
+              <td>{{ cita.hora }}</td>
+              <td>{{ cita.descripcion }}</td>
+              <td>
+                <!-- Puedes agregar botones para modificar y eliminar citas aquí si es necesario -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Botones de acción -->
+    <div class="mt-4">
+      <button class="btn btn-primary" routerLink="/diario/{{paciente?.idPaciente}}"  >
+        <i class="bi bi-journal-bookmark"></i> Diario
+      </button>
+      <button class="btn btn-secondary" (click)="volverALaLista()">
+        <i class="bi bi-arrow-left"></i> Volver a la Lista de Pacientes
+      </button>
+    </div>                             
+    </mat-card-content>
+  </mat-card>
+  
