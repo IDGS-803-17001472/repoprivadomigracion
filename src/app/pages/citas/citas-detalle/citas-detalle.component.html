@@ -1,0 +1,48 @@
+<mat-card class="cardWithShadow">
+    
+    <mat-card-content>
+
+
+        <div class="col-lg-12">
+            <!-- --------------------------------------------------- -->
+            <!-- two line -->
+            <!-- --------------------------------------------------- -->
+            <mat-card class="b-1 shadow-none">
+              <mat-card-header>
+                <mat-card-title>Detalles de la Cita</mat-card-title>
+                
+              </mat-card-header>
+              <mat-card-content class="b-t-1">
+                <mat-list>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">ID de la cita</span>
+                      <span matListItemLine class="mat-body-1">{{ citaDetails.id }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Paciente</span>
+                      <span matListItemLine class="mat-body-1">{{ citaDetails.asignacionPaciente.paciente.persona.nombre }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Fecha</span>
+                      <span matListItemLine class="mat-body-1">{{ citaDetails.fecha | date }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Hora</span>
+                      <span matListItemLine class="mat-body-1">{{ citaDetails.horario }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Estado de la cita</span>
+                      <span matListItemLine class="mat-body-1">{{ citaEstado }}</span>
+                    </mat-list-item>
+                </mat-list>
+  
+                <button mat-flat-button color="primary" class="m-r-8" (click)="goBack()">Volver al Calendario</button>
+                <button mat-flat-button color="primary" class="m-r-8" (click)="aceptarCita()">Aceptar Cita</button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+  
+    </mat-card-content>
+  </mat-card>
+  

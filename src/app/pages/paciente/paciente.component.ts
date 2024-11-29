@@ -10,7 +10,8 @@ import { MaterialModule } from 'src/app/material.module';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { TablerIconsModule } from 'angular-tabler-icons';
 
 
 // table 1
@@ -60,6 +61,7 @@ const PRODUCT_DATA: productsData[] = [
     MatTableModule,
     CommonModule,
     MatCardModule,
+    TablerIconsModule,
     MaterialModule,
     MatIconModule,
     MatMenuModule,
@@ -88,6 +90,11 @@ export class PacienteComponent {
 
   pacienteSeleccionado?: Paciente;
 
+
+  nuevoPaciente() {
+
+    this.router.navigate(['paciente/agregar']);
+  }
 
 
 

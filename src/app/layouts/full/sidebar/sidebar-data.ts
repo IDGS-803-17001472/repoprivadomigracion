@@ -2,7 +2,7 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'Profesional',
   },
   {
     displayName: 'Dashboard',
@@ -10,12 +10,14 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
-    navCap: 'Profesional',
-  },
-  {
     displayName: 'Pacientes',
     iconName: 'archive',
     route: '/paciente',
+  },
+  {
+    displayName: 'Citas',
+    iconName: 'archive',
+    route: '/citas',
   },
   {
     navCap: 'Ui Components',

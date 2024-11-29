@@ -1,6 +1,39 @@
-<mat-card class="cardWithShadow">
-    <mat-card-content>
-      <mat-card-title>Pacientes</mat-card-title>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Pacientes</mat-card-title>
+      <div style="margin-left: auto;">
+
+         
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Agregar" class="align-horizontal">
+          <span>Agregar</span>
+          <mat-icon>
+            <i-tabler name="dots" class="icon-20"></i-tabler>
+          </mat-icon>
+        </button>
+</div>
+  <mat-menu #menu="matMenu" class="cardWithShadow">
+    <button mat-menu-item (click)="nuevoPaciente()">
+      <mat-icon>
+         <i-tabler name="user" class="icon-20"></i-tabler>
+      </mat-icon>
+      <span>Registrar</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>
+         <i-tabler name="link" class="icon-20"></i-tabler>
+      </mat-icon>
+      <span>Vincular por código
+      </span>
+    </button>
+  </mat-menu>
+
+
+  </mat-card-header>
+  <mat-card-content class="b-t-1" >
+
+
+
+
   
       <div class="table-responsive">
         <table mat-table [dataSource]="paginatedPacientes" class="w-100">

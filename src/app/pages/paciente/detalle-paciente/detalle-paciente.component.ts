@@ -9,7 +9,7 @@ import { PacienteService } from '../../../services/paciente.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdatePacienteDto } from '../../../interfaces/UpdatePacienteDto';
 import { FormControl, FormsModule } from '@angular/forms';
-import { MatList, MatListItem } from '@angular/material/list';
+import { MatList, MatListItem, MatListModule } from '@angular/material/list';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,7 +17,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from 'src/app/material.module';
 
 @Component({
   selector: 'app-detalle-paciente',
@@ -25,14 +28,15 @@ import { MatDatepicker } from '@angular/material/datepicker';
   imports: [FormsModule, RouterLink, CommonModule,
     MatCardModule, MatListItem, MatList, MatFormField,
     MatLabel, MatSelectModule,
-    CommonModule,
-    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
     MatDatepicker,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,MatListModule,  MatIconModule, MaterialModule 
   ],  
+  providers: [
+    MatDatepickerModule, ],
   templateUrl: './detalle-paciente.component.html',
   styleUrl: './detalle-paciente.component.scss'
 })

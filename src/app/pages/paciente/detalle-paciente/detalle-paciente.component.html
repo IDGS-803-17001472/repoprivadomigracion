@@ -5,8 +5,15 @@
   <mat-card-content class="b-t-1">
     <div class="row">
       <!-- Información del Paciente -->
-        <div *ngIf="editMode" class="mb-4">
-          <h4>Editar Paciente</h4>
+        <div *ngIf="editMode" class="col-lg-7" >
+          <!-- --------------------------------------------------- -->
+          <!-- two line -->
+          <!-- --------------------------------------------------- -->
+          <mat-card class="b-1 shadow-none">
+            <mat-card-header>
+              <mat-card-title>Editar Paciente {{paciente?.nombre + " " + paciente?.apellidoPaterno}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="b-t-1">
           <form (ngSubmit)="guardarCambios()" #pacienteForm="ngForm">
             <mat-form-field class="w-100" appearance="outline">
               <mat-label>Nombre</mat-label>
@@ -24,23 +31,18 @@
               <mat-label>Apellido Materno</mat-label>
               <input matInput  [(ngModel)]="paciente!.apellidoMaterno" name="apellidoMaterno" required/>
             </mat-form-field>
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Fecha de nacimiento</mat-label>
             <mat-form-field class="form-field">
-              <mat-hint>MM/DD/AAAA</mat-hint>
-                <input matInput [(ngModel)]="paciente!.fechaDisplay" required >
+              <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput [(ngModel)]="paciente!.fechaDisplay" [matDatepicker]="fechaDisplay" name="fechaDisplay" required >
                 <mat-datepicker-toggle matIconSuffix ></mat-datepicker-toggle>
                 <mat-datepicker #fechaDisplay></mat-datepicker>
           </mat-form-field>
-            <div class="mb-3">
-              <label for="email" class="form-label">Fecha de Nacimiento</label>
-              <input type="date" id="birthdate" class="form-control" [(ngModel)]="paciente!.fechaDisplay" name="birthdate" required>
-            </div>
-            <div class="mb-3">
-              <label for="telefono" class="form-label">Teléfono</label>
-              <input type="phone" id="birthdate" class="form-control" [(ngModel)]="paciente!.telefono" name="telefono" required>
-            </div>
-  
-          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input  type="phone" matInput  [(ngModel)]="paciente!.telefono" name="telefono" required/>
+          </mat-form-field>
+          
+          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2"  style=" margin-left: 5px;">
             <div class="mb-0 me-4" style="color: #6a1b9a;">Genero: </div>
             <div class="form-check form-check-inline mb-0 me-4">
               <input class="form-check-input"
@@ -59,7 +61,7 @@
             </div>
           </div>
   
-          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2" style="margin-bottom: 15px !important; margin-left: 5px;">
             <div class="mb-0 me-4" style="color: #6a1b9a;">Estado Civil: </div>
             <div class="form-check form-check-inline mb-0 me-4">
               <input class="form-check-input"
@@ -78,21 +80,25 @@
             </div>
           </div>
   
-          <div class="mb-3">
-            <label for="ocupacion" class="form-label">Ocupacion</label>
-            <input type="text" id="ocupacion" class="form-control"  [(ngModel)]="paciente!.ocupacion" name="ocupacion" required>
-          </div>
-          <div class="mb-3">
-            <label for="notasAdicionales" class="form-label">Notas Adicionales</label>
-            <input type="text" id="notasAdicionales" class="form-control"  [(ngModel)]="paciente!.notasAdicionales" name="notasAdicionales" >
-          </div>
+
+
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Ocupacion</mat-label>
+            <input matInput type="text" id="ocupacion"  [(ngModel)]="paciente!.ocupacion" name="ocupacion" required>
+          </mat-form-field>
+
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Notas Adicionales</mat-label>
+            <input matInput type="text" id="notasAdicionales"  [(ngModel)]="paciente!.notasAdicionales" name="notasAdicionales" >
+          </mat-form-field>
   
   
   
-  
-            <button type="submit" class="btn btn-primary" (click)="guardarCambios()">Guardar Cambios</button>
-            <button type="button" class="btn btn-secondary ms-2" (click)="cancelarEdicion()">Cancelar</button>
+          <button mat-flat-button color="primary" class="m-r-8" type="submit" >Guardar Cambios</button>
+          <button type="button" mat-stroked-button color="warn" (click)="cancelarEdicion()">Cancelar</button>
           </form>
+            </mat-card-content>
+          </mat-card>
         </div>
         
  
@@ -127,13 +133,14 @@
               </mat-list-item>
               <mat-list-item>
                 <span matListItemTitle class="f-s-16 f-w-600">Fecha de Registro</span>
-                <span matListItemLine class="mat-body-1">{{ paciente?.fechaRegistro }}</span>
+                <span matListItemLine class="mat-body-1">{{ paciente?.fechaRegistro | date }}</span>
               </mat-list-item>
             </mat-list>
-            <button class="btn btn-warning btn-sm me-2" (click)="activarEdicion()">
+            <br />
+            <button mat-flat-button color="primary" class="m-r-8" (click)="activarEdicion()">
               <i class="bi bi-pencil"></i> Modificar Paciente
             </button>
-            <button class="btn btn-danger btn-sm" (click)="eliminarPaciente()">
+            <button mat-stroked-button color="warn" (click)="eliminarPaciente()">
               <i class="bi bi-trash"></i> Eliminar Paciente
             </button>
           </mat-card-content>
@@ -172,28 +179,21 @@
               </tbody>
             </table>
             <div class="mt-4">
-              <button class="btn btn-primary" routerLink="/diario/{{paciente?.idPaciente}}"  >
+
+              
+  
+              <button type="button" mat-flat-button color="primary" class="m-r-8"  routerLink="/diario/{{paciente?.idPaciente}}"  >
                 <i class="bi bi-journal-bookmark"></i> Diario
               </button>
-              <button class="btn btn-secondary" (click)="volverALaLista()">
+              <button type="button" mat-flat-button color="primary" class="m-r-8"  (click)="volverALaLista()">
                 <i class="bi bi-arrow-left"></i> Volver a la Lista de Pacientes
               </button>
             </div> 
           </mat-card-content>
         </mat-card>
       </div>
-
-
-
   
-      <!-- Citas del Paciente -->
-      <div  class="col-lg-3" >
-        <h4>Citas</h4>
-        
-      </div>
     </div>
-  
-    <!-- Botones de acción -->
         
   </mat-card-content>
 </mat-card>

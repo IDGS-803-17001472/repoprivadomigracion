@@ -25,6 +25,23 @@ export const routes: Routes = [
           import('./pages/paciente/paciente.routes').then(
             (m) => m.UiComponentsRoutes
           ),
+          canActivate: [AuthGuard] // Protege esta ruta
+      },
+      {
+        path: 'diario',
+        loadChildren: () =>
+          import('./pages/diario/diario.routes').then(
+            (m) => m.UiComponentsRoutes
+          ),
+          canActivate: [AuthGuard] // Protege esta ruta
+      },
+      {
+        path: 'citas',
+        loadChildren: () =>
+          import('./pages/citas/citas.routes').then(
+            (m) => m.UiComponentsRoutes
+          ),
+          canActivate: [AuthGuard] // Protege esta ruta
       },
       {
         path: 'ui-components',

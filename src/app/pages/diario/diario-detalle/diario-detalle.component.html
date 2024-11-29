@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title" style="color: #6a0dad;">{{ formatFecha(diario.fecha) }}</h3>
+        <p class="card-text">{{ diario.contenido }}</p>
+  
+        <div *ngIf="diario.mediciones && diario.mediciones.length > 0">
+          <h5>Emociones:</h5>
+          <ul>
+            <li *ngFor="let medicion of diario.mediciones">
+              <strong>{{ medicion.emocionName }}:</strong> Nivel {{ medicion.nivel }}
+            </li>
+          </ul>
+        </div>
+  
+        <button class="btn btn-secondary" (click)="goBack()">Volver</button>
+      </div>
+    </div>
+  </div>
+  

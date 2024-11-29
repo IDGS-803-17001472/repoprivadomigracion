@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 style="color: #6a0dad;">Buscar Diario por Fecha</h3>
+      <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="filterByDate()">
+       </div>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col-md-4" *ngFor="let diario of filteredDiarios">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body text-center">
+            <i class="bi bi-journal-text" style="font-size: 2rem; color: #6a0dad;"></i>
+            <h5 class="card-title mt-3">{{ diario.paciente.persona.nombre }}</h5>
+            <p class="card-text">{{ formatFecha(diario.fecha) }}</p>
+            <p class="card-text">{{ diario.contenido }}</p>
+            <a (click)="verDetalleDiario(diario.id)" class="btn btn-primary">Ver Más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

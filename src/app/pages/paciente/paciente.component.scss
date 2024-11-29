@@ -1,0 +1,11 @@
+.align-horizontal {
+    display: flex;
+    align-items: center; /* Centra verticalmente texto e ícono */
+    gap: 8px; /* Espacio entre texto e ícono */
+    flex-direction: row-reverse; /* Invierte el orden de los elementos */
+  }
+  
+  .align-horizontal mat-icon {
+    display: inline-flex;
+    font-size: 20px; /* Ajusta el tamaño del ícono */
+  }

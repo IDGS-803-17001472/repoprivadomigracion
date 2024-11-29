@@ -37,6 +37,11 @@ export class AuthService {
       );
   }
 
+
+
+
+  
+
   register(data: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}account/register`, data);
   }
@@ -137,5 +142,8 @@ export class AuthService {
 
   getDiario = (id: number): Observable<DiariosPaciente> =>
     this.http.get<DiariosPaciente>(`${this.apiUrl}Diario/diario/${id}`);
+
+
+  
 
 }
