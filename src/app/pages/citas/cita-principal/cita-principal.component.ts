@@ -14,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './cita-principal.component.html',
   styleUrls: ['./cita-principal.component.scss']
 })
-export class CitaPrincipalComponent implements OnInit {
+export class CitaPrincipalComponent implements OnInit {  
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],

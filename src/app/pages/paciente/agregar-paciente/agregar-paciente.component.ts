@@ -17,11 +17,20 @@ import { ValidationError } from '../../../interfaces/validation-error';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PacienteService } from '../../../services/paciente.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-agregar-paciente',
   standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatIconModule,  CommonModule, ReactiveFormsModule],
+  imports: [MatInputModule, MatSelectModule, MatIconModule,  CommonModule, ReactiveFormsModule, MatCardModule,
+    MatDatepickerModule, MatButtonModule
+  ],
+  providers: [
+    provideNativeDateAdapter()
+  ],
   templateUrl: './agregar-paciente.component.html',
   styleUrl: './agregar-paciente.component.scss'
 })
