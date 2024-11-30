@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PacienteService } from '../../../services/paciente.service'; // Asegúrate de tener un servicio que gestione pacientes
 import { PacienteView } from '../../../interfaces/pacienteView'; // Modelo de datos para el paciente
@@ -12,11 +12,15 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MaterialModule } from 'src/app/material.module';
 
 @Component({
   selector: 'app-registro-citas',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatLabel, MatSelectModule, FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatLabel, MatSelectModule, FormsModule, 
+    MatInputModule, MatFormFieldModule, MatButtonModule,  MaterialModule],
+  providers: [provideNativeDateAdapter(), ],
   templateUrl: './registro-citas.component.html',
   styleUrls: ['./registro-citas.component.scss']
 })
@@ -37,7 +41,7 @@ export class RegistroCitasComponent implements OnInit {
   ) {
     this.appointmentForm = this.fb.group({
       idPaciente: ['', Validators.required], // Campo para seleccionar paciente
-      horario: ['', Validators.required],
+      horario: [false, Validators.required],
       fecha: ['', Validators.required] // Asegúrate de que el campo fecha esté incluido y tenga un valor
     });
   }

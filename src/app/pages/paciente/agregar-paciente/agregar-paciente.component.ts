@@ -1,6 +1,6 @@
 import { Paciente } from './../../../interfaces/paciente';
 
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -49,7 +49,9 @@ export class AgregarPacienteComponent {
   confirmPasswordHide: boolean = true;
   passwordHide: boolean = true;
   errors!: ValidationError[];
+  base64Image: string | null = null; // Variable global dentro del componente
 
+  constructor( private cd: ChangeDetectorRef) {}
 
   register() {
     if (this.registerForm.valid) {
@@ -75,8 +77,26 @@ export class AgregarPacienteComponent {
     });
   }else{
     console.log('Formulario no válido');
+    this.logFormErrors();
+    this.ngOnInit();
   }
   }
+
+
+  volverALaLista(): void {
+    this.router.navigate(['/paciente']);
+  }
+
+
+  logFormErrors() {
+    Object.keys(this.registerForm.controls).forEach((field) => {
+      const control = this.registerForm.get(field);
+      if (control && control.invalid) {
+        console.log(`Error en el campo "${field}":`, control.errors);
+      }
+    });
+  }
+
   check() {
     if(this.authService.getUserDetail()){
       console.log("hola");
@@ -84,6 +104,10 @@ export class AgregarPacienteComponent {
       console.log("adios")
     }
   }
+
+  selectedFileName: string | null = null;
+
+
 
   linkPaciente() {
     if (this.linkForm.valid) {
@@ -127,6 +151,7 @@ export class AgregarPacienteComponent {
         ocupacion: ['', Validators.required],
         direccion: ['', Validators.required],
         notasAdicionales: [''],
+        foto: [null],
         roles: [['paciente']],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', [Validators.required]],
@@ -149,6 +174,55 @@ export class AgregarPacienteComponent {
 
     this.roles$ = this.roleService.getRoles();
   }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+
+      const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Solo se permiten imágenes (PNG, JPEG, JPG)');
+        input.value = ''; // Reinicia el input
+        return;
+      }
+
+      if (file.size > 2 * 1024 * 1024) {
+        alert('El tamaño máximo permitido es 2MB');
+        input.value = ''; // Reinicia el input
+        return;
+      }
+
+      this.selectedFileName = input.files[0].name; // Guarda el nombre del archivo
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.result) {
+          this.base64Image = reader.result.toString(); // Guarda el resultado en la variable
+          this.updateForm(); // Actualiza el formulario
+        }
+      };
+
+      reader.onerror = () => {
+        alert('Ocurrió un error al leer el archivo');
+        input.value = ''; // Reinicia el input en caso de error
+      };
+
+      reader.readAsDataURL(file); // Convierte a Base64
+    }
+  }
+  
+
+  updateForm(): void {
+    if (this.base64Image) {
+      this.registerForm.get('foto')?.setValue(this.base64Image); // Asigna el valor al formulario
+      console.log('Formulario actualizado:', this.registerForm.value);
+
+      // Forzar la detección de cambios
+      this.cd.detectChanges();
+    }
+  }
+
 
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
