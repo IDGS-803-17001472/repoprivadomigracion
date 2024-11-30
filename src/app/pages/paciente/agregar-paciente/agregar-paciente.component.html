@@ -4,6 +4,7 @@
         </mat-card-header>
         <mat-card-content class="b-t-1">
         <form  [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="row">
           <div class="col-lg-6">
             <!-- input -->
             <mat-label class="f-w-600 m-b-8 d-block">Nombre</mat-label>
@@ -69,6 +70,50 @@
           </div>
   
 
+          <div class="col-lg-6"  style="margin-bottom: 15px;">
+            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+              <div class="mb-0 me-4" style="color: #6a1b9a;">Genero: </div>
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input"
+                formControlName="sexo" type="radio" name="sexo" id="femaleGender" value="female" />
+                <label class="form-check-label" for="femaleGender">Femenino</label>
+              </div>
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input"
+                formControlName="sexo" type="radio" name="sexo" id="maleGender" value="male" />
+                <label class="form-check-label" for="maleGender">Masculino</label>
+              </div>
+              <div class="form-check form-check-inline mb-0">
+                <input class="form-check-input"
+                formControlName="sexo" type="radio" name="sexo" id="otherGender" value="other" />
+                <label class="form-check-label" for="otherGender">Otro</label>
+              </div>
+            </div>
+          </div>
+    
+
+            <div class="col-lg-6"  style="margin-bottom: 15px;">
+            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+              <div class="mb-0 me-4" style="color: #6a1b9a;">Estado Civil: </div>
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input"
+                formControlName="estadoCivil"  type="radio" name="estadoCivil" id="solteroEC" value="female" />
+                <label class="form-check-label" for="solteroEC">Soltero</label>
+              </div>
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input"
+                formControlName="estadoCivil"  type="radio" name="estadoCivil" id="casadoEC" value="male" />
+                <label class="form-check-label" for="casadoEC">Casado</label>
+              </div>
+              <div class="form-check form-check-inline mb-0">
+                <input class="form-check-input"
+                formControlName="estadoCivil"  type="radio" name="estadoCivil" id="separadoEC" value="other" />
+                <label class="form-check-label" for="separadoEC">Separado</label>
+              </div>
+            </div>
+            </div>
+
+          <div class="col-lg-6">
           <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Fecha de nacimiento</mat-label>
           <mat-form-field class="form-field">
             <mat-hint>MM/DD/AAAA</mat-hint>
@@ -80,46 +125,11 @@
             Fecha de nacimiento obligatoria
           </mat-error>
         </mat-form-field>
+          </div>
 
           
   
-          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-            <div class="mb-0 me-4" style="color: #6a1b9a;">Genero: </div>
-            <div class="form-check form-check-inline mb-0 me-4">
-              <input class="form-check-input"
-              formControlName="sexo" type="radio" name="sexo" id="femaleGender" value="female" />
-              <label class="form-check-label" for="femaleGender">Femenino</label>
-            </div>
-            <div class="form-check form-check-inline mb-0 me-4">
-              <input class="form-check-input"
-              formControlName="sexo" type="radio" name="sexo" id="maleGender" value="male" />
-              <label class="form-check-label" for="maleGender">Masculino</label>
-            </div>
-            <div class="form-check form-check-inline mb-0">
-              <input class="form-check-input"
-              formControlName="sexo" type="radio" name="sexo" id="otherGender" value="other" />
-              <label class="form-check-label" for="otherGender">Otro</label>
-            </div>
-          </div>
-  
-          <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-            <div class="mb-0 me-4" style="color: #6a1b9a;">Estado Civil: </div>
-            <div class="form-check form-check-inline mb-0 me-4">
-              <input class="form-check-input"
-              formControlName="estadoCivil"  type="radio" name="estadoCivil" id="solteroEC" value="female" />
-              <label class="form-check-label" for="solteroEC">Soltero</label>
-            </div>
-            <div class="form-check form-check-inline mb-0 me-4">
-              <input class="form-check-input"
-              formControlName="estadoCivil"  type="radio" name="estadoCivil" id="casadoEC" value="male" />
-              <label class="form-check-label" for="casadoEC">Casado</label>
-            </div>
-            <div class="form-check form-check-inline mb-0">
-              <input class="form-check-input"
-              formControlName="estadoCivil"  type="radio" name="estadoCivil" id="separadoEC" value="other" />
-              <label class="form-check-label" for="separadoEC">Separado</label>
-            </div>
-          </div>
+        
 
 
           <div class="col-lg-6">
@@ -149,7 +159,10 @@
  
   
   
+          <div class="col-lg-6">
           <button mat-flat-button color="primary" class="m-r-8" type="submit" >Registrar Paciente</button>
+          </div>
+          </div>
         </form>
       </mat-card-content>
     </mat-card>

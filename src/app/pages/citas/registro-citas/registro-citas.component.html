@@ -43,7 +43,8 @@
           <!-- Campo oculto para la fecha seleccionada -->
           <input type="hidden" formControlName="fecha">
   
-          <button type="submit" class="btn btn-primary w-100">Registrar Cita</button>
+          <button mat-flat-button color="success" class="m-r-8" type="submit" >Registrar Cita</button>
+          <button type="button" mat-flat-button color="basic" (click)="goBack()">Volver al Calendario</button>
           <button type="button" class="btn btn-secondary w-100 mt-3" (click)="goBack()">Volver al Calendario</button>
         </form>
       </div>

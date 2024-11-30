@@ -11,11 +11,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-registro-citas',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatLabel, MatSelectModule, FormsModule, MatInputModule, MatFormFieldModule],
+  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatLabel, MatSelectModule, FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './registro-citas.component.html',
   styleUrls: ['./registro-citas.component.scss']
 })

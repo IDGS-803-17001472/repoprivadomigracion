@@ -119,8 +119,8 @@ export class AgregarPacienteComponent {
       {
         email: ['', [Validators.required, Validators.email]],
         nombre: ['', Validators.required],
-        apellidoMaterno: ['', Validators.required],
-        apellidoPaterno: [''],
+        apellidoMaterno: [''],
+        apellidoPaterno: ['', Validators.required],
         sexo: ['', Validators.required],
         fechaNacimiento: ['', Validators.required],
         estadoCivil: ['', Validators.required],
