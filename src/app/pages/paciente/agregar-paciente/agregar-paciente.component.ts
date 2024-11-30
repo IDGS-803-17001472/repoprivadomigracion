@@ -19,20 +19,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { PacienteService } from '../../../services/paciente.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-agregar-paciente',
-  standalone: true,
-  imports: [MatInputModule, MatSelectModule, MatIconModule,  CommonModule, ReactiveFormsModule, MatCardModule,
-    MatDatepickerModule, MatButtonModule
-  ],
-  providers: [
-    provideNativeDateAdapter()
-  ],
-  templateUrl: './agregar-paciente.component.html',
-  styleUrl: './agregar-paciente.component.scss'
+    selector: 'app-agregar-paciente',
+    imports: [MatInputModule, MatSelectModule, MatIconModule, CommonModule, ReactiveFormsModule, MatCardModule,
+        MatDatepickerModule, MatButtonModule,MatNativeDateModule
+    ],
+    providers: [
+        
+    ],
+    templateUrl: './agregar-paciente.component.html',
+    styleUrl: './agregar-paciente.component.scss'
 })
 export class AgregarPacienteComponent {
   showCodeInput = false;

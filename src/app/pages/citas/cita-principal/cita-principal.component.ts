@@ -8,11 +8,10 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // FullCalendar modu
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-cita-principal',
-  standalone: true,
-  imports: [FullCalendarModule, MatCardModule],
-  templateUrl: './cita-principal.component.html',
-  styleUrls: ['./cita-principal.component.scss']
+    selector: 'app-cita-principal',
+    imports: [FullCalendarModule, MatCardModule],
+    templateUrl: './cita-principal.component.html',
+    styleUrls: ['./cita-principal.component.scss']
 })
 export class CitaPrincipalComponent implements OnInit {  
   calendarOptions: CalendarOptions = {

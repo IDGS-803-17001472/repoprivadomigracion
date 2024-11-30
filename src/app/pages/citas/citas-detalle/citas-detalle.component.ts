@@ -10,11 +10,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-citas-detalle',
-  standalone: true,
-  templateUrl: './citas-detalle.component.html',
-  imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatListModule, MatButtonModule],
-  styleUrls: ['./citas-detalle.component.scss']
+    selector: 'app-citas-detalle',
+    templateUrl: './citas-detalle.component.html',
+    imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatListModule, MatButtonModule],
+    styleUrls: ['./citas-detalle.component.scss']
 })
 export class CitasDetalleComponent implements OnInit {
   citaId: string | null = null;

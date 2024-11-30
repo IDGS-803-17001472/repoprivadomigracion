@@ -8,11 +8,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-principal-diario',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
-  templateUrl: './principal-diario.component.html',
-  styleUrls: ['./principal-diario.component.scss']
+    selector: 'app-principal-diario',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './principal-diario.component.html',
+    styleUrls: ['./principal-diario.component.scss']
 })
 export class PrincipalDiarioComponent implements OnInit {
   authService = inject(AuthService);

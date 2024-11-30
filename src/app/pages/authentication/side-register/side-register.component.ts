@@ -20,13 +20,12 @@ import { ValidationError } from 'src/app/interfaces/validation-error';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
-  selector: 'app-side-register',
-  standalone: true,
-  imports: [RouterModule, MaterialModule, FormsModule, ReactiveFormsModule, MatIconModule, MatSelectModule, MatInputModule, RouterLink, CommonModule],
-  providers: [
-    provideNativeDateAdapter()
-  ],
-  templateUrl: './side-register.component.html',
+    selector: 'app-side-register',
+    imports: [RouterModule, MaterialModule, FormsModule, ReactiveFormsModule, MatIconModule, MatSelectModule, MatInputModule, RouterLink, CommonModule],
+    providers: [
+        provideNativeDateAdapter()
+    ],
+    templateUrl: './side-register.component.html'
 })
 export class AppSideRegisterComponent {
   constructor(private router: Router, private cd: ChangeDetectorRef) {}

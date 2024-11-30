@@ -23,21 +23,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/app/material.module';
 
 @Component({
-  selector: 'app-detalle-paciente',
-  standalone: true,
-  imports: [FormsModule, RouterLink, CommonModule,
-    MatCardModule, MatListItem, MatList, MatFormField,
-    MatLabel, MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatNativeDateModule,MatListModule,  MatIconModule, MaterialModule 
-  ],  
-  providers: [
-    MatDatepickerModule, ],
-  templateUrl: './detalle-paciente.component.html',
-  styleUrl: './detalle-paciente.component.scss'
+    selector: 'app-detalle-paciente',
+    imports: [FormsModule, RouterLink, CommonModule,
+        MatCardModule, MatListItem, MatList, MatFormField,
+        MatLabel, MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatNativeDateModule, MatListModule, MatIconModule, MaterialModule
+    ],
+    providers: [
+        MatDatepickerModule,
+    ],
+    templateUrl: './detalle-paciente.component.html',
+    styleUrl: './detalle-paciente.component.scss'
 })
 export class DetallePacienteComponent  implements OnInit {
   paciente?: Paciente

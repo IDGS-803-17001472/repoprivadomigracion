@@ -28,6 +28,14 @@ export const routes: Routes = [
           canActivate: [AuthGuard] // Protege esta ruta
       },
       {
+        path: 'contacto',
+        loadChildren: () =>
+          import('./pages/contacto/contacto.routes').then(
+            (m) => m.ContactoRoutes
+          ),
+          canActivate: [AuthGuard] // Protege esta ruta
+      },
+      {
         path: 'diario',
         loadChildren: () =>
           import('./pages/diario/diario.routes').then(
@@ -40,6 +48,14 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/citas/citas.routes').then(
             (m) => m.UiComponentsRoutes
+          ),
+          canActivate: [AuthGuard] // Protege esta ruta
+      },
+      {
+        path: 'perfil',
+        loadChildren: () =>
+          import('./pages/perfil/perfil.routes').then(
+            (m) => m.PerfilRoutes
           ),
           canActivate: [AuthGuard] // Protege esta ruta
       },

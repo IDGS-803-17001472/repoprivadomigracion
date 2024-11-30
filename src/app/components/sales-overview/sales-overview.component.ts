@@ -42,10 +42,9 @@ export interface salesOverviewChart {
 }
 
 @Component({
-  selector: 'app-sales-overview',
-  standalone: true,
-  imports: [MaterialModule, TablerIconsModule, NgApexchartsModule, MatButtonModule],
-  templateUrl: './sales-overview.component.html',
+    selector: 'app-sales-overview',
+    imports: [MaterialModule, TablerIconsModule, NgApexchartsModule, MatButtonModule],
+    templateUrl: './sales-overview.component.html'
 })
 export class AppSalesOverviewComponent {
 

@@ -14,20 +14,19 @@ interface Food {
 }
 
 @Component({
-  selector: 'app-forms',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatCheckboxModule,
-  ],
-  templateUrl: './forms.component.html',
+    selector: 'app-forms',
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatCheckboxModule,
+    ],
+    templateUrl: './forms.component.html'
 })
 export class AppFormsComponent {
   country: Food[] = [

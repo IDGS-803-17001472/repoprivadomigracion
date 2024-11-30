@@ -1,1 +1,102 @@
-w
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Perfil</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="row">
+        <!-- Información Personal -->
+        <div class="col-lg-6">
+            <mat-card class="b-1 shadow-none">
+              <mat-card-header>
+                <mat-card-title>Información Personal</mat-card-title>
+              </mat-card-header>
+              <mat-card-content class="b-t-1">
+                <!-- Imagen del usuario -->
+                <div class="text-center">
+                  <img
+                    *ngIf="imgSrc"
+                    [src]="imgSrc"
+                    alt="Foto de perfil"
+                    width="60%"
+                    class="profile-img rounded-circle"
+                  />
+                  <mat-icon *ngIf="!imgSrc" class="profile-placeholder">person</mat-icon>
+                </div>
+    
+                <!-- Lista de datos personales -->
+                <mat-list>
+                  <mat-list-item>
+                    <span matListItemTitle class="f-s-16 f-w-600">Nombre completo</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.fullName }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemTitle class="f-s-16 f-w-600">Género</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.sexo }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemTitle class="f-s-16 f-w-600">fecha de Nacimiento</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.fechadeNacimiento | date }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemTitle class="f-s-16 f-w-600">Estado Civil</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.estadoCivil | titlecase }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemTitle class="f-s-16 f-w-600">Título</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.titulo | titlecase }}</span>
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <!-- Información de Contacto -->
+          <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12">
+              <mat-card class="b-1 shadow-none">
+                <mat-card-header>
+                  <mat-card-title>Información de Contacto</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="b-t-1">
+                  <!-- Lista de datos personales -->
+                  <mat-list>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Correo Electrónico</span>
+                      <span matListItemLine class="mat-body-1">{{ userDetail?.email }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Teléfono</span>
+                      <span matListItemLine class="mat-body-1">{{ userDetail?.telefono }}</span>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+              </div>    
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+              <mat-card class="b-1 shadow-none">
+                <mat-card-header>
+                  <mat-card-title>Información Profesional</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="b-t-1">
+                  <!-- Lista de datos personales -->
+                  <mat-list>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Título</span>
+                      <span matListItemLine class="mat-body-1">{{ userDetail?.titulo }}</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <span matListItemTitle class="f-s-16 f-w-600">Ocupación</span>
+                      <span matListItemLine class="mat-body-1">{{ userDetail?.ocupacion }}</span>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+              </div>
+            </div>
+            </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

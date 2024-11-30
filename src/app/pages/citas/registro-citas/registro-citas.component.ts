@@ -14,12 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MaterialModule } from 'src/app/material.module';
+import {MatTimepickerModule} from '@angular/material/timepicker';
 
 @Component({
   selector: 'app-registro-citas',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, MatCardModule, MatLabel, MatSelectModule, FormsModule, 
-    MatInputModule, MatFormFieldModule, MatButtonModule,  MaterialModule],
+    MatInputModule, MatFormFieldModule, MatButtonModule, MatTimepickerModule],
   providers: [provideNativeDateAdapter(), ],
   templateUrl: './registro-citas.component.html',
   styleUrls: ['./registro-citas.component.scss']
@@ -43,9 +44,27 @@ export class RegistroCitasComponent implements OnInit {
       idPaciente: ['', Validators.required], // Campo para seleccionar paciente
       horario: [false, Validators.required],
       fecha: ['', Validators.required] // Asegúrate de que el campo fecha esté incluido y tenga un valor
+    });   
+    this.appointmentForm.get('horario')?.valueChanges.subscribe((value) => {
+      if (value) {
+        const formattedValue = this.formatTime(value);
+        this.appointmentForm.patchValue({ horario: formattedValue }, { emitEvent: false });
+      }
     });
   }
 
+  formatTime(value: string): string {
+    const date = new Date(value);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  }
+
+
+
+
+
+  
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.fecha = params.get('date'); // Obtén la fecha seleccionada de la URL

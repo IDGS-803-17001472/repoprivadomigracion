@@ -10,18 +10,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'app-tooltips',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CdkScrollable,
-    MatButtonModule,
-    MatTooltipModule, MatCardModule, MatInputModule, MatCheckboxModule
-  ],
-  templateUrl: './tooltips.component.html',
+    selector: 'app-tooltips',
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CdkScrollable,
+        MatButtonModule,
+        MatTooltipModule, MatCardModule, MatInputModule, MatCheckboxModule
+    ],
+    templateUrl: './tooltips.component.html'
 })
 export class AppTooltipsComponent {
   //  disabled

@@ -143,13 +143,13 @@
 
           <div class="col-lg-6">
           <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Fecha de nacimiento</mat-label>
-          <mat-form-field class="form-field">
+          <mat-form-field appearance="outline" class="w-100" >
             <mat-hint>MM/DD/AAAA</mat-hint>
               <input matInput [matDatepicker]="fechaNacimiento" 
               formControlName="fechaNacimiento" required placeholder="Fecha de Nacimiento">
               <mat-datepicker-toggle matIconSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
               <mat-datepicker #fechaNacimiento></mat-datepicker>
-          <mat-error *ngIf="registerForm.controls['fechaNacimiento'].hasError('required')">
+          <mat-error *ngIf="registerForm.controls['fechaNacimiento'].hasError('required')  && registerForm.controls['fechaNacimiento'].touched">
             Fecha de nacimiento obligatoria
           </mat-error>
         </mat-form-field>

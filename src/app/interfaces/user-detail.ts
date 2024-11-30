@@ -3,9 +3,13 @@ export interface UserDetail {
     fullName: string;
     email: string;
     roles: string[];
-    phoneNumber: string;
-    twoFacotrEnabled: true;
-    phoneNumberConfirmed: true;
-    accessFailedCount: 0;
+    telefono: string;
+    sexo: string;
+    fechadeNacimiento: string;
+    estadoCivil: string;
+    titulo: string;
+    ocupacion: string;
+    direccion: string;
     foto : string
   }
+

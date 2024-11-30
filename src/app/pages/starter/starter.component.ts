@@ -9,18 +9,17 @@ import { AppBlogCardsComponent } from 'src/app/components/blog-card/blog-card.co
 
 
 @Component({
-  selector: 'app-starter',
-  standalone: true,
-  imports: [
-    MaterialModule,
-    AppSalesOverviewComponent,
-    AppYearlyBreakupComponent,
-    AppMonthlyEarningsComponent,
-    AppRecentTransactionsComponent,
-    AppProductPerformanceComponent,
-    AppBlogCardsComponent
-  ],
-  templateUrl: './starter.component.html',
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-starter',
+    imports: [
+        MaterialModule,
+        AppSalesOverviewComponent,
+        AppYearlyBreakupComponent,
+        AppMonthlyEarningsComponent,
+        AppRecentTransactionsComponent,
+        AppProductPerformanceComponent,
+        AppBlogCardsComponent
+    ],
+    templateUrl: './starter.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class StarterComponent { }

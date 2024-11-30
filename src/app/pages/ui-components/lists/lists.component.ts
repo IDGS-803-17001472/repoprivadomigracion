@@ -12,10 +12,9 @@ export interface Section {
 }
 
 @Component({
-  selector: 'app-lists',
-  standalone: true,
-  imports: [MatListModule, MatCardModule, DatePipe,MatIconModule, MaterialModule ],
-  templateUrl: './lists.component.html',
+    selector: 'app-lists',
+    imports: [MatListModule, MatCardModule, DatePipe, MatIconModule, MaterialModule],
+    templateUrl: './lists.component.html'
 })
 export class AppListsComponent {
   constructor() {}

@@ -48,18 +48,17 @@ const PRODUCT_DATA: productsData[] = [
 ];
 
 @Component({
-  selector: 'app-tables',
-  standalone: true,
-  imports: [
-    MatTableModule,
-    CommonModule,
-    MatCardModule,
-    MaterialModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule,
-  ],
-  templateUrl: './tables.component.html',
+    selector: 'app-tables',
+    imports: [
+        MatTableModule,
+        CommonModule,
+        MatCardModule,
+        MaterialModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule,
+    ],
+    templateUrl: './tables.component.html'
 })
 export class AppTablesComponent {
   // table 1

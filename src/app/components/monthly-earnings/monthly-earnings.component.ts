@@ -28,9 +28,8 @@ export interface monthlyChart {
 
 @Component({
     selector: 'app-monthly-earnings',
-    standalone: true,
     imports: [NgApexchartsModule, MaterialModule, TablerIconsModule],
-    templateUrl: './monthly-earnings.component.html',
+    templateUrl: './monthly-earnings.component.html'
 })
 export class AppMonthlyEarningsComponent {
     @ViewChild('chart') chart: ChartComponent = Object.create(null);

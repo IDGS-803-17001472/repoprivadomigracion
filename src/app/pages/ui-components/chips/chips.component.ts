@@ -38,22 +38,21 @@ export interface Vegetable {
 }
 
 @Component({
-  selector: 'app-chips',
-  standalone: true,
-  templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.scss'],
-  imports: [
-    MatFormFieldModule,
-    MatChipsModule,
-    MatIconModule,
-    MatCardModule,
-    CdkDropList,
-    CdkDrag,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-chips',
+    templateUrl: './chips.component.html',
+    styleUrls: ['./chips.component.scss'],
+    imports: [
+        MatFormFieldModule,
+        MatChipsModule,
+        MatIconModule,
+        MatCardModule,
+        CdkDropList,
+        CdkDrag,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppChipsComponent {
   // drag n drop

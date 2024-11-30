@@ -13,11 +13,10 @@ import { CommonModule } from '@angular/common';
 import { TablerIconComponent, TablerIconsModule } from 'angular-tabler-icons';
 
 @Component({
-  selector: 'app-nav-item',
-  standalone: true,
-  imports: [MaterialModule, CommonModule, TablerIconsModule],
-  templateUrl: './nav-item.component.html',
-  styleUrls: [],
+    selector: 'app-nav-item',
+    imports: [MaterialModule, CommonModule, TablerIconsModule],
+    templateUrl: './nav-item.component.html',
+    styleUrls: []
 })
 export class AppNavItemComponent implements OnChanges {
   @Output() toggleMobileLink: any = new EventEmitter<void>();

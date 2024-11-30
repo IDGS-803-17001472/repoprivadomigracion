@@ -7,11 +7,10 @@ import { DiariosPaciente } from '../../../interfaces/entrada';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-diario-detalle',
-  standalone: true,
-  imports: [CommonModule, ],
-  templateUrl: './diario-detalle.component.html',
-  styleUrl: './diario-detalle.component.scss'
+    selector: 'app-diario-detalle',
+    imports: [CommonModule,],
+    templateUrl: './diario-detalle.component.html',
+    styleUrl: './diario-detalle.component.scss'
 })
 export class DiarioDetalleComponent implements OnInit {
   authService = inject(AuthService);

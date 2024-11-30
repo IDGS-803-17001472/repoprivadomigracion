@@ -14,16 +14,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-side-login',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-  ],
-  templateUrl: './side-login.component.html',
+    selector: 'app-side-login',
+    imports: [
+        RouterModule,
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+    ],
+    templateUrl: './side-login.component.html'
 })
 export class AppSideLoginComponent {
 

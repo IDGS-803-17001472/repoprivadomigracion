@@ -17,7 +17,8 @@
             <div class="col-lg-4">
               <mat-label class="f-w-600 m-b-8 d-block">Paciente</mat-label>
               <mat-form-field appearance="outline" class="w-100">
-                <mat-select formControlName="idPaciente">
+                <mat-select formControlName="idPaciente" required>
+                  <mat-option value="" disabled>Selecciona un paciente</mat-option>
                   @for(paciente of pacientes; track paciente.idPaciente) {
                   <mat-option [value]="paciente.idPaciente">{{
                     paciente.nombre + " " + paciente.apellidoPaterno + " " + paciente.apellidoMaterno
@@ -30,17 +31,15 @@
 
 </div>
 <div class="row">
-
-
-
-          
-        <div class="col-lg-4">
-          <!-- input -->
-          <mat-label class="f-w-600 m-b-8 d-block">Horario</mat-label>
-            <input   type="time" formControlName="horario" required/>
-        </div>
-        </div>
-  
+  <div class="col-lg-4">
+  <mat-label class="f-w-600 m-b-8 d-block">Horario</mat-label>
+  <mat-form-field  appearance="outline" class="w-100">
+    <input matInput [matTimepicker]="horario" formControlName="horario" required placeholder="Selecciona un horario">
+    <mat-timepicker-toggle matIconSuffix [for]="horario"></mat-timepicker-toggle>
+    <mat-timepicker #horario></mat-timepicker>
+  </mat-form-field>
+          </div>
+  </div>
           <div class="row" style="margin-top: 15px;">
         <div class="col-lg-12"  style="text-align: right;">
           <!-- Campo oculto para la fecha seleccionada -->

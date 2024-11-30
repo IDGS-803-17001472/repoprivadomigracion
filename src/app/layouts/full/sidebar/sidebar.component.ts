@@ -12,10 +12,9 @@ import { MaterialModule } from 'src/app/material.module';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: true,
-  imports: [BrandingComponent, TablerIconsModule, MaterialModule, RouterModule],
-  templateUrl: './sidebar.component.html',
+    selector: 'app-sidebar',
+    imports: [BrandingComponent, TablerIconsModule, MaterialModule, RouterModule],
+    templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
   constructor() { }

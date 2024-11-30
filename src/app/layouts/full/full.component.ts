@@ -21,21 +21,20 @@ const BELOWMONITOR = 'screen and (max-width: 1023px)';
 
 
 @Component({
-  selector: 'app-full',
-  standalone: true,
-  imports: [
-    RouterModule,
-    AppNavItemComponent,
-    MaterialModule,
-    CommonModule,
-    SidebarComponent,
-    NgScrollbarModule,
-    TablerIconsModule,
-    HeaderComponent,
-  ],
-  templateUrl: './full.component.html',
-  styleUrls: [],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-full',
+    imports: [
+        RouterModule,
+        AppNavItemComponent,
+        MaterialModule,
+        CommonModule,
+        SidebarComponent,
+        NgScrollbarModule,
+        TablerIconsModule,
+        HeaderComponent,
+    ],
+    templateUrl: './full.component.html',
+    styleUrls: [],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class FullComponent implements OnInit {

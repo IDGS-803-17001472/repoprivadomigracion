@@ -16,11 +16,10 @@ import { CommonModule, NgForOf } from '@angular/common';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule, CommonModule, NgScrollbarModule, TablerIconsModule, MaterialModule],
-  templateUrl: './header.component.html',
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-header',
+    imports: [RouterModule, CommonModule, NgScrollbarModule, TablerIconsModule, MaterialModule],
+    templateUrl: './header.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
   authService = inject(AuthService);
