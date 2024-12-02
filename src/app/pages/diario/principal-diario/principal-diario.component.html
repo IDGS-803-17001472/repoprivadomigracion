@@ -1,11 +1,37 @@
-<div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4">
-        <h3 style="color: #6a0dad;">Buscar Diario por Fecha</h3>
-      <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="filterByDate()">
-       </div>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Buscar Diario por Mes</mat-card-title>
+    <div style="margin-left: auto;">
+      <button type="button" mat-stroked-button color="primary" class="m-r-8" (click)="volverALaLista()" class="align-horizontal">
+        <i class="bi bi-arrow-left"></i> Volver a los detalles del paciente
+      </button>
     </div>
-  
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <!-- Selector de mes -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Selecciona un mes</mat-label>
+      <input 
+        matInput 
+        [matDatepicker]="monthPicker" 
+        [value]="selectedMonth" 
+        placeholder="yyyy-MM" 
+        readonly
+      >
+      <mat-datepicker-toggle matSuffix [for]="monthPicker"></mat-datepicker-toggle>
+      <mat-datepicker 
+        #monthPicker 
+        startView="multi-year" 
+        (monthSelected)="monthSelected($event, monthPicker)" 
+        panelClass="example-month-picker">
+      </mat-datepicker>
+    </mat-form-field>
+
+
+
+    
+
     <div class="row mt-4">
       <div class="col-md-4" *ngFor="let diario of filteredDiarios">
         <div class="card shadow-sm mb-4">
@@ -19,5 +45,5 @@
         </div>
       </div>
     </div>
-  </div>
-  
+  </mat-card-content>
+</mat-card>

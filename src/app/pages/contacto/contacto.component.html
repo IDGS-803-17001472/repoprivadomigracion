@@ -5,41 +5,8 @@
     <mat-card-content class="b-t-1">
       <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
         <div class="row">
-          <!-- Nombre -->
-          <div class="col-lg-6">
-            <mat-label class="f-w-600 m-b-8 d-block">Nombre</mat-label>
-            <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Ingresa tu nombre" formControlName="nombre" />
-              <mat-error *ngIf="contactForm.controls['nombre'].hasError('required')">
-                El nombre es obligatorio
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Apellido -->
-          <div class="col-lg-6">
-            <mat-label class="f-w-600 m-b-8 d-block">Apellido</mat-label>
-            <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Ingresa tu apellido" formControlName="apellido" />
-              <mat-error *ngIf="contactForm.controls['apellido'].hasError('required')">
-                El apellido es obligatorio
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Email -->
-          <div class="col-lg-6">
-            <mat-label class="f-w-600 m-b-8 d-block">Correo Electrónico</mat-label>
-            <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="email" placeholder="Ingresa tu email" formControlName="email" />
-              <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
-                El email es obligatorio
-              </mat-error>
-              <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
-                Debes ingresar un email válido
-              </mat-error>
-            </mat-form-field>
-          </div>
           <!-- Asunto -->
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <mat-label class="f-w-600 m-b-8 d-block">Asunto</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput placeholder="Ingresa el asunto" formControlName="asunto" />

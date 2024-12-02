@@ -72,7 +72,10 @@ export class AgregarPacienteComponent {
           });
         }
       },
-      complete: () => console.log('Register success'),
+      complete: () => {console.log('Register success');
+        
+    this.router.navigate(['paciente']);
+      },
     });
   }else{
     console.log('Formulario no válido');
