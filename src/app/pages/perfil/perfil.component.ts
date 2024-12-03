@@ -7,10 +7,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from 'src/app/material.module';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserDetail } from 'src/app/interfaces/user-detail';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil',
-  imports: [MatListModule, MatCardModule, DatePipe, MatIconModule, MaterialModule, CommonModule],
+  imports: [MatListModule, MatCardModule, MatIconModule, CommonModule],
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.scss'],
 })

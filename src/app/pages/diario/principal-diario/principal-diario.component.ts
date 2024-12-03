@@ -100,13 +100,16 @@ setCurrentMonth(): void {
   }
 
 
+  
+
   verDetalleDiario(id: number): void {
-    this.router.navigate(['/detalle-diario', id]);
+    this.router.navigate(['diario/diario-detalle', id]);
   }
 
   listadiario() {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('id'); this.idPaciente = id ? +id : null; // Convertir el id a número 
+      const id = params.get('id'); 
+      this.idPaciente = id ? +id : null; // Convertir el id a número 
       if (this.idPaciente) {
         this.authService
         .getListaDiarios(this.idPaciente).subscribe({

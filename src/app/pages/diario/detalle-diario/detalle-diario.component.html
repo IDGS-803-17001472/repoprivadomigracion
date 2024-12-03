@@ -1,13 +1,27 @@
-<div class="container mt-5">
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Entrada del diario</mat-card-title>
+    <div style="margin-left: auto;">
+      <button type="button" mat-stroked-button color="primary" class="m-r-8"  [routerLink]="['/diario', diario.paciente.id]" class="align-horizontal">
+        <i class="bi bi-arrow-left"></i> Volver al diario del paciente
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <!-- Selector de mes -->
+
+
+    <div class="container mt-5">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title" style="color: #6a0dad;">{{ diario.titulo }}</h3>
+        <h3 class="card-title" style="color: #6a0dad;">{{ diario.paciente.persona.nombre }}</h3>
         <p class="card-text">{{ diario.fecha | date }}</p>
-        <p class="card-text">{{ diario.descripcion }}</p>
-        <p class="card-text"><strong>Emoción:</strong> {{ diario.emocion }}</p>
-        <a  [routerLink]="['/diario']"  class="btn btn-secondary" style="cursor: pointer;
-  ">Regresar</a>
+        <p class="card-text">{{ diario.contenido }}</p>
+       
       </div>
     </div>
   </div>
+
+  </mat-card-content>  
+</mat-card>
   

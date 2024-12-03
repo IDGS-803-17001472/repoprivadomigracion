@@ -16,7 +16,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         MatSelectModule,
         FormsModule,
         ReactiveFormsModule,
-        CdkScrollable,
         MatButtonModule,
         MatTooltipModule, MatCardModule, MatInputModule, MatCheckboxModule
     ],
