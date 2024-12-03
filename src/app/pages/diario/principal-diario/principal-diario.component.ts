@@ -63,7 +63,7 @@ setCurrentMonth(): void {
     this.filterByMonth(); // Aplica el filtro
   }
   filterByMonth(): void {
-    console.log('Mes seleccionado:', this.selectedMonth);
+    console.log('Mes seleccionado:', this.selectedMonth2);
   
     if (this.selectedMonth2) {
       const [year, month] = this.selectedMonth2.split('-').map(Number); // Extraer año y mes

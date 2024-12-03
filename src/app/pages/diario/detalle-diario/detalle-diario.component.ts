@@ -1,11 +1,24 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatList, MatListItem, MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { MaterialModule } from 'src/app/material.module';
 
 @Component({
   selector: 'app-detalle-diario',
-  standalone: true,
   templateUrl: './detalle-diario.component.html',
-  styleUrl: './detalle-diario.component.scss'
+  imports: [ RouterLink, CommonModule,
+  ],
+  styleUrl: './detalle-diario.component.css'
 })
 export class DetalleDiarioComponent {
   diario: any;
