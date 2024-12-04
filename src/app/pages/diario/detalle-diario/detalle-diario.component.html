@@ -17,7 +17,17 @@
         <h3 class="card-title" >Paciente {{ diario.paciente.persona.nombre }} {{ diario.paciente.persona.apellidoPaterno }} {{ diario.paciente.persona.apellidoMaterno }}</h3>
         <p class="card-text">{{ diario.fecha | fechaHora : 'fecha' }}</p>
         <p class="card-text">{{ diario.contenido }}</p>
-       
+        <div *ngIf="diario.mediciones && diario.mediciones.length > 0" class="mt-4">
+          <h4>Emociones registradas:</h4>
+          <ul>
+            <li *ngFor="let medicion of diario.mediciones">
+              {{ medicion.emocionName }}: Nivel {{ medicion.nivel }}
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!diario.mediciones || diario.mediciones.length === 0" class="mt-4">
+          <p>No se han registrado emociones para esta entrada del diario.</p>
+        </div>
       </div>
     </div>
   </div>
