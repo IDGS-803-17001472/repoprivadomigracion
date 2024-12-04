@@ -14,6 +14,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule, NgForOf } from '@angular/common';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'app-header',
@@ -22,6 +23,9 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
+
+  serverUrl: string = environment.serverUrl;
+
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
@@ -52,7 +56,7 @@ export class HeaderComponent {
     this.authService.getDetail().subscribe({
         next: (response) => {
             console.log('Lista de data:', response);
-            this.imgSrc = response.foto;
+            this.imgSrc = `${this.serverUrl}` + `${response.foto}`;
         },
         error: (error) => {
             this.matSnackBar.open(error.error.message, 'Close', {

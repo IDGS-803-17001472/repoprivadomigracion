@@ -6,6 +6,8 @@ export interface DiariosPaciente {
     id: number;
     persona: {
       nombre: string;
+      apellidoMaterno: string;
+      apelllidoPaterno: string;
     };
   };
   mediciones: Medicion[];

@@ -133,6 +133,10 @@ getUltimosDiarios = (): Observable<any[]> =>
       return this.http.put(`${this.apiUrl}Paciente/modificar-paciente/${id}`, updatePacienteDto);
     }
 
+  // Método para obtener citas de un paciente por ID
+  getCitasDePaciente(idPaciente: number | null): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}Cita/profesional/${idPaciente}/citas`);
+  }
 
     getPacientes(): Observable<PacienteView[]> {
       return this.http.get<PacienteView[]>(`${this.apiUrl}Paciente/profesional/pacientes/`);

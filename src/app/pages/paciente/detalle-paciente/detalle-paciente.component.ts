@@ -1,8 +1,8 @@
 import { Paciente } from '../../../interfaces/paciente2';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 
 import { MatCardModule } from '@angular/material/card';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, LOCALE_ID, OnInit } from '@angular/core';
 import { Route, ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Cita } from '../../../interfaces/cita';
 import { PacienteService } from '../../../services/paciente.service';
@@ -21,20 +21,23 @@ import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialModule } from 'src/app/material.module';
+import { environment } from 'src/environments/environment';
+import { FechaHoraPipe } from 'src/app/pipes/fecha-hora.pipe';
+import localeEs from '@angular/common/locales/es'; // Español
 
+registerLocaleData(localeEs, 'es');
 @Component({
     selector: 'app-detalle-paciente',
     imports: [FormsModule, RouterLink, CommonModule,
-        MatCardModule, MatListItem, MatList, MatFormField,
-        MatLabel, MatSelectModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatDatepickerModule,
-        MatNativeDateModule, MatListModule, MatIconModule, MaterialModule
-    ],
+    MatCardModule, MatListItem, MatList, MatFormField,
+    MatLabel, MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule, MatListModule, MatIconModule, MaterialModule, FechaHoraPipe],
     providers: [
-        MatDatepickerModule,
+        MatDatepickerModule,FechaHoraPipe,  { provide: LOCALE_ID, useValue: 'es' } 
     ],
     templateUrl: './detalle-paciente.component.html',
     styleUrl: './detalle-paciente.component.scss'
@@ -44,11 +47,10 @@ export class DetallePacienteComponent  implements OnInit {
   idPaciente: number | null = null;
   pacienteService = inject(PacienteService);
   matSnackBar = inject(MatSnackBar);
+  serverUrl = environment.serverUrl;
+  rutaImg = "";
 
-  citas: Cita[] = [
-    { fecha: '2024-08-12', hora: '09:00', descripcion: 'Revisión general' },
-    { fecha: '2024-08-15', hora: '11:00', descripcion: 'Consulta especializada' },
-    // Agrega más citas si es necesario
+  citas: any[] = [
   ];
 
   editMode: boolean = false;
@@ -69,6 +71,7 @@ export class DetallePacienteComponent  implements OnInit {
               this.paciente = response; // Assuming `pacientes` is where you store the list
               this.paciente.edad = this.calcularEdad(this.paciente.fechaNacimiento);
               this.paciente.fechaDisplay = this.paciente.fechaNacimiento!.toString().split('T')[0]; // "2024-08-30"
+              this.rutaImg = encodeURI(this.serverUrl + this.paciente.foto);
               console.log('paciente obj:', response);
           },
           error: (error) => {
@@ -83,6 +86,20 @@ export class DetallePacienteComponent  implements OnInit {
         console.error('ID de paciente no definido');
       }
     });
+
+    this.pacienteService.getCitasDePaciente(this.idPaciente).subscribe({
+      next: (citas) => {
+        this.citas = citas; // Asignar las citas obtenidas
+        console.log('citas:', this.citas);
+      },
+      error: (error) => {
+        this.matSnackBar.open('Error al cargar las citas: ' + error.message, 'Close', {
+          duration: 5000,
+          horizontalPosition: 'center',
+        });
+      },
+    });
+    
   }
 
   calcularEdad(fechaNacimiento?: Date ): number | null {
@@ -121,6 +138,7 @@ guardarCambios(): void {
       sexo: this.paciente.sexo!,
       estadoCivil: this.paciente.estadoCivil!,
       ocupacion: this.paciente.ocupacion!,
+      notasAdicionales: this.paciente.notasAdicionales!,
       // Añadir otros campos si es necesario
     };
     console.log(this.idPaciente);
@@ -131,6 +149,7 @@ guardarCambios(): void {
           duration: 5000,
           horizontalPosition: 'center',
         });
+        this.ngOnInit();
         this.editMode = false; // Salir del modo de edición
       },
       error: (error) => {

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DiariosPaciente } from '../../../interfaces/entrada';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-principal-diario',
   imports: [FormsModule, CommonModule, MatCardModule, MatDatepickerModule, ReactiveFormsModule,
      MatFormFieldModule, MatNativeDateModule, MatInputModule, MatButtonModule],
-  templateUrl: './principal-diario.component.html',
+  templateUrl: './principal-diario.component.html',providers: [DatePipe],
   styleUrls: ['./principal-diario.component.scss']
 })
 export class PrincipalDiarioComponent implements OnInit {
@@ -32,18 +32,37 @@ export class PrincipalDiarioComponent implements OnInit {
 
   selectedMonth: string | null = null; // Para almacenar el mes seleccionado (formato 'yyyy-MM')
   selectedMonth2: string | null = null; // Para almacenar el mes seleccionado (formato 'yyyy-MM')
+  formattedMonth: string | null = null;
   diarios: DiariosPaciente[] = [];
   filteredDiarios: DiariosPaciente[] = [];
   idPaciente: number | null = null;
 
   selectedDate: string | null = null;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.listadiario();
     this.setCurrentMonth(); // Inicializar con el mes actual
+    this.formatMonth();
 }
+
+  formatMonth(): void {
+    if (this.selectedMonth2) {
+      const [year, month] = this.selectedMonth2.split('-');
+      const date = new Date(+year, +month - 1, 1);
+      this.formattedMonth = this.getMonthName(date.getMonth()) + ' ' + year;
+    }
+  }
+
+  getMonthName(month: number): string {
+    const months = [
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    return months[month];
+  }
+
 
 setCurrentMonth(): void {
   const now = new Date();
@@ -61,6 +80,7 @@ setCurrentMonth(): void {
     
     datepicker.close(); // Cierra el datepicker
     this.filterByMonth(); // Aplica el filtro
+    this.formatMonth();
   }
   filterByMonth(): void {
     console.log('Mes seleccionado:', this.selectedMonth2);

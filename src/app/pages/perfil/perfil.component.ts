@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserDetail } from 'src/app/interfaces/user-detail';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-perfil',
@@ -22,6 +23,7 @@ export class PerfilComponent {
 
   userDetail: UserDetail | null = null; // Variable para guardar el detalle del usuario
   imgSrc: string | null = null; // Variable específica para la foto
+  serverUrl = environment.serverUrl;
 
   ngOnInit() {
     this.getData();
@@ -37,7 +39,7 @@ export class PerfilComponent {
 
         // Generar el enlace de la foto en base64
         if (response.foto) {
-          this.imgSrc = `${response.foto}`;
+          this.imgSrc = `${this.serverUrl}${response.foto}`;
         }
       },
       error: (error) => {

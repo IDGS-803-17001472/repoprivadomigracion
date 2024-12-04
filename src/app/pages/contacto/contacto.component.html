@@ -1,19 +1,13 @@
 <mat-card class="cardWithShadow theme-card">
     <mat-card-header>
-      <mat-card-title class="m-b-0">Formulario de Contacto</mat-card-title>
+      <mat-card-title class="m-b-0">Formulario de Queja o Sugerencia</mat-card-title>
     </mat-card-header>
     <mat-card-content class="b-t-1">
       <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
         <div class="row">
           <!-- Asunto -->
-          <div class="col-lg-12">
-            <mat-label class="f-w-600 m-b-8 d-block">Asunto</mat-label>
-            <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput placeholder="Ingresa el asunto" formControlName="asunto" />
-              <mat-error *ngIf="contactForm.controls['asunto'].hasError('required')">
-                El asunto es obligatorio
-              </mat-error>
-            </mat-form-field>
+           <div class="col-lg-12">
+          <p>A continuación redacta detalladamente el problema que te ha ocurrido o la sugerencia que deseas hacer.</p>
           </div>
           <!-- Mensaje -->
           <div class="col-lg-12">

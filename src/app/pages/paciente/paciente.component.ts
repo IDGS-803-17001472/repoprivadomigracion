@@ -14,6 +14,7 @@ import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { VincularPorCodigoDialogComponent } from './vincular-por-codigo-dialog.component';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -49,6 +50,7 @@ export class PacienteComponent {
   currentPage: number = 1;
   pageSize: number = 5;
   totalPages: number = Math.ceil(this.pacientes.length / this.pageSize);
+  serverUrl = environment.serverUrl;
 
   pacienteSeleccionado?: Paciente;
 
@@ -123,6 +125,7 @@ export class PacienteComponent {
             this.pacientes = response; // Assuming `pacientes` is where you store the list
             this.pacientes.forEach(element => {
               element.edad = this.calcularEdad(element.fechaNacimiento);
+              element.foto = encodeURI(this.serverUrl + element.foto);
             });
             console.log(this.pacientes)
             this.applyFilter(); // Refresh the list if necessary

@@ -6,7 +6,8 @@
       <mat-list>
         <mat-list-item *ngFor="let cita of citasProximas" (click)="verDetalleCita(cita.id)">
           <div matListItemTitle class="f-s-16 f-w-600">{{ cita.title }}</div>
-          <div matListItemLine>{{ cita.date | date: 'short' }}</div>
+          <div matListItemLine>{{ cita.date | fechaHora: 'fecha' }}</div>
+          <div matListItemLine>{{ cita.time | fechaHora: 'hora' }}</div>
           <mat-icon matListItemIcon>event</mat-icon>
         </mat-list-item>
       </mat-list>
@@ -22,7 +23,7 @@
         <mat-list-item *ngFor="let diario of ultimosDiarios" (click)="verDetalleDiario(diario.id)">
             <div matListItemTitle class="f-s-16 f-w-600">{{ diario.paciente.persona.nombre }}</div>
             <div matListItemLine >{{ diario.contenido }}</div>
-          <div matListItemLine>{{ diario.fecha | date: 'short' }}</div>
+            <div matListItemLine>{{ diario.fecha | fechaHora: 'fecha' }}</div>
           <mat-icon matListItemIcon>note</mat-icon>
         </mat-list-item>
       </mat-list>

@@ -26,7 +26,7 @@
         panelClass="example-month-picker">
       </mat-datepicker>
     </mat-form-field>
-
+    <h2> {{ formattedMonth }}</h2>
 
 
     
@@ -39,10 +39,13 @@
             <h5 class="card-title mt-3">{{ diario.paciente.persona.nombre }}</h5>
             <p class="card-text">{{ formatFecha(diario.fecha) }}</p>
             <p class="card-text">{{ diario.contenido }}</p>
-            <a (click)="verDetalleDiario(diario.id)" class="btn btn-primary">Ver Más</a>
+            <button type="button" mat-flat-button color="accent" class="m-r-8"  (click)="verDetalleDiario(diario.id)" class="align-horizontal">
+              <i class="bi bi-arrow-left"></i> Ver Más
+            </button>
           </div>
         </div>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
+

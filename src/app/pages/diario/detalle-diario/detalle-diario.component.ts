@@ -15,12 +15,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DiariosPaciente } from 'src/app/interfaces/entrada';
 import { MaterialModule } from 'src/app/material.module';
 import { AuthService } from 'src/app/services/auth.service';
+import { FechaHoraPipe } from 'src/app/pipes/fecha-hora.pipe';
 
 @Component({
   selector: 'app-detalle-diario',
   templateUrl: './detalle-diario.component.html',
-  imports: [ RouterLink, CommonModule, MatCardModule, MatButtonModule
-  ],
+  imports: [RouterLink, CommonModule, MatCardModule, MatButtonModule, FechaHoraPipe],
   styleUrl: './detalle-diario.component.scss'
 })
 export class DetalleDiarioComponent {
@@ -35,7 +35,9 @@ export class DetalleDiarioComponent {
     paciente: {
       id: 0,
       persona: {
-        nombre: ''
+        nombre: '',
+        apellidoMaterno: '',
+        apelllidoPaterno: ''
       }
     },
     mediciones: []

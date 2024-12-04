@@ -4,6 +4,9 @@
 
     
     <div style="margin-left: auto;">
+      <button type="button" mat-flat-button color="accent" class="m-r-8"  routerLink="/diario/{{paciente?.idPaciente}}" >
+        <i class="bi bi-journal-bookmark"></i> Ir al diario
+      </button>
       <button type="button" mat-stroked-button color="primary" class="m-r-8"  (click)="volverALaLista()"  class="align-horizontal">
         <i class="bi bi-arrow-left"></i> Volver a la lista de pacientes
       </button>
@@ -13,7 +16,7 @@
   <mat-card-content class="b-t-1">
     <div class="row">
       <!-- Información del Paciente -->
-        <div *ngIf="editMode" class="col-lg-7" >
+        <div *ngIf="editMode" class="col-lg-6" >
           <!-- --------------------------------------------------- -->
           <!-- two line -->
           <!-- --------------------------------------------------- -->
@@ -113,7 +116,7 @@
 
 
 
-      <div class="col-lg-7" *ngIf="!editMode">
+      <div class="col-lg-6" *ngIf="!editMode">
         <!-- --------------------------------------------------- -->
         <!-- two line -->
         <!-- --------------------------------------------------- -->
@@ -122,6 +125,16 @@
             <mat-card-title>Paciente</mat-card-title>
           </mat-card-header>
           <mat-card-content class="b-t-1">
+            <div class="text-center">
+              <img
+              *ngIf="!(this.rutaImg.length == 0)"
+                [src]="this.rutaImg"
+                alt="Foto de perfil"
+                width="60%"
+                class="profile-img rounded-circle"
+              />
+              <mat-icon *ngIf="this.rutaImg.length == 0" class="profile-placeholder">person</mat-icon>
+            </div>
             <mat-list>
               <mat-list-item>
                 <span matListItemTitle class="f-s-16 f-w-600">Nombre</span>
@@ -141,7 +154,7 @@
               </mat-list-item>
               <mat-list-item>
                 <span matListItemTitle class="f-s-16 f-w-600">Fecha de Registro</span>
-                <span matListItemLine class="mat-body-1">{{ paciente?.fechaRegistro | date }}</span>
+                <span matListItemLine class="mat-body-1">{{ paciente?.fechaRegistro | date  }}</span>
               </mat-list-item>
             </mat-list>
             <br />
@@ -168,7 +181,7 @@
 
 
 
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <!-- --------------------------------------------------- -->
         <!-- two line -->
         <!-- --------------------------------------------------- -->
@@ -183,14 +196,13 @@
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Descripción</th>
-                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let cita of citas">
-                  <td>{{ cita.fecha }}</td>
-                  <td>{{ cita.hora }}</td>
-                  <td>{{ cita.descripcion }}</td>
+                  <td>{{ cita.fecha | fechaHora: 'fecha' }}</td>
+                  <td>{{ cita.horario | fechaHora: 'hora' }}</td>
+                  <td>{{ cita.estatus }}</td>
                   <td>
                     <!-- Puedes agregar botones para modificar y eliminar citas aquí si es necesario -->
                   </td>
@@ -198,11 +210,10 @@
               </tbody>
             </table>
 
-
             <div class="row" style="margin-top: 15px;">
               <div class="col-lg-12" style="text-align: right;">
-                <button type="button" mat-flat-button color="accent" class="m-r-8"  routerLink="/diario/{{paciente?.idPaciente}}"  >
-                  <i class="bi bi-journal-bookmark"></i> Ir al diario
+                <button type="button" mat-flat-button color="accent" class="m-r-8"  routerLink="/citas"  >
+                  <i class="bi bi-journal-bookmark"></i> Calendario de Citas
                 </button>
               </div>
               </div>

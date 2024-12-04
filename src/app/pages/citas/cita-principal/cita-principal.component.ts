@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { PacienteService } from '../../../services/paciente.service'; // Servicio para obtener citas
 import { FullCalendarModule } from '@fullcalendar/angular'; // FullCalendar module
 import { MatCardModule } from '@angular/material/card';
+import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
     selector: 'app-cita-principal',

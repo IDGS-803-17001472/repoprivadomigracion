@@ -7,5 +7,6 @@ export interface UpdatePacienteDto {
   sexo: string;
   estadoCivil: string;
   ocupacion: string;
+  notasAdicionales: string;
   // Agrega otros campos si es necesario
 }

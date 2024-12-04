@@ -9,13 +9,16 @@ import { AppBlogCardsComponent } from 'src/app/components/blog-card/blog-card.co
 import { PacienteService } from 'src/app/services/paciente.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FechaHoraPipe } from 'src/app/pipes/fecha-hora.pipe';
 
 
 @Component({
     selector: 'app-starter',
     imports: [
-        MaterialModule,CommonModule
-    ],
+    MaterialModule, CommonModule,
+    FechaHoraPipe
+],
+providers: [ FechaHoraPipe],
     templateUrl: './starter.component.html',
     encapsulation: ViewEncapsulation.None
 })
@@ -31,6 +34,7 @@ export class StarterComponent {
   
     ngOnInit() {
       this.pacienteService.getCitasProximas().subscribe((citas: any[]) => {
+        console.log("ultimos citas", citas);
         this.citasProximas = citas.slice(0, 5); // Mostrar solo las 5 primeras citas
       });
   
@@ -45,6 +49,6 @@ export class StarterComponent {
     }
   
     verDetalleDiario(diarioId: string) {
-      this.router.navigate(['/diarios/detalle', diarioId]);
+      this.router.navigate(['/diario/diario-detalle', diarioId]);
     }
   }
