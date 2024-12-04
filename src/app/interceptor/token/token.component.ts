@@ -42,7 +42,7 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
             },
             error: () => {
               authService.logout();
-              router.navigate(['/login']);
+              router.navigate(['/authentication/login']);
             },
           });
       }

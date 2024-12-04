@@ -27,6 +27,12 @@ export class PacienteService {
   constructor(private http: HttpClient) {}
 
 
+getCitasProximas = (): Observable<any[]> =>
+  this.http.get<any[]>(`${this.apiUrl}Cita/proximas`);
+
+getUltimosDiarios = (): Observable<any[]> =>
+  this.http.get<any[]>(`${this.apiUrl}Diario/profesional/ultimos`);
+
   register(data: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}account/registerPaciente`, data);
   }

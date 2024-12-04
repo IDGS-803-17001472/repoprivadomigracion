@@ -1,8 +1,30 @@
-<div class="row">
-</div>
-
-<div class="row">
-</div>
-
-<div class="row">
-</div>
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Citas Próximas</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <mat-list>
+        <mat-list-item *ngFor="let cita of citasProximas" (click)="verDetalleCita(cita.id)">
+          <div matListItemTitle class="f-s-16 f-w-600">{{ cita.title }}</div>
+          <div matListItemLine>{{ cita.date | date: 'short' }}</div>
+          <mat-icon matListItemIcon>event</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Últimos Diarios Registrados</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <mat-list>
+        <mat-list-item *ngFor="let diario of ultimosDiarios" (click)="verDetalleDiario(diario.id)">
+            <div matListItemTitle class="f-s-16 f-w-600">{{ diario.paciente.persona.nombre }}</div>
+            <div matListItemLine >{{ diario.contenido }}</div>
+          <div matListItemLine>{{ diario.fecha | date: 'short' }}</div>
+          <mat-icon matListItemIcon>note</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
