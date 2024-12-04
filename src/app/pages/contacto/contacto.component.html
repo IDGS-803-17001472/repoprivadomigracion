@@ -1,32 +1,89 @@
 <mat-card class="cardWithShadow theme-card">
-    <mat-card-header>
-      <mat-card-title class="m-b-0">Formulario de Queja o Sugerencia</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="b-t-1">
-      <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
-        <div class="row">
-          <!-- Asunto -->
-           <div class="col-lg-12">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Formulario de Queja o Sugerencia</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
+      <div class="row">
+        <!-- Descripción -->
+        <div class="col-lg-12">
           <p>A continuación redacta detalladamente el problema que te ha ocurrido o la sugerencia que deseas hacer.</p>
-          </div>
-          <!-- Mensaje -->
-          <div class="col-lg-12">
-            <mat-label class="f-w-600 m-b-8 d-block">Mensaje</mat-label>
-            <mat-form-field appearance="outline" class="w-100" color="primary">
-              <textarea matInput placeholder="Escribe tu mensaje" formControlName="mensaje" rows="4"></textarea>
-              <mat-error *ngIf="contactForm.controls['mensaje'].hasError('required')">
-                El mensaje es obligatorio
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <!-- Botón de Enviar -->
-          <div class="col-lg-12 text-center">
-            <button type="submit" mat-raised-button color="primary" [disabled]="contactForm.invalid">
-              Enviar Mensaje
-            </button>
-          </div>
         </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  
+        <!-- Selección del Tipo -->
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Tipo</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <mat-select formControlName="tipo" placeholder="Selecciona un tipo">
+              <mat-option *ngFor="let opcion of tipos" [value]="opcion.value">
+                {{ opcion.label }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="contactForm.controls['tipo'].hasError('required')">
+              El tipo es obligatorio
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- Mensaje -->
+        <div class="col-lg-12">
+          <mat-label class="f-w-600 m-b-8 d-block">Mensaje</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <textarea matInput placeholder="Escribe tu mensaje" formControlName="mensaje" rows="4"></textarea>
+            <mat-error *ngIf="contactForm.controls['mensaje'].hasError('required')">
+              El mensaje es obligatorio
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- Botón de Enviar -->
+        <div class="col-lg-12 text-center">
+          <button type="submit" mat-raised-button color="primary" [disabled]="contactForm.invalid">
+            Enviar Mensaje
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Lista de Quejas Registradas</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-table [dataSource]="quejas" class="mat-elevation-z8">
+      <!-- Columna ID -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let queja"> {{ queja.id }} </mat-cell>
+      </ng-container>
+
+      <!-- Columna Tipo -->
+      <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+        <mat-cell *matCellDef="let queja">
+          <ng-container [ngSwitch]="queja.tipo">
+            <span *ngSwitchCase="1">Mejora</span>
+            <span *ngSwitchCase="2">Queja</span>
+            <span *ngSwitchCase="3">Error</span>
+            <span *ngSwitchCase="4">Sugerencia</span>
+            <span *ngSwitchDefault>Otro</span>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Columna Descripción -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
+        <mat-cell *matCellDef="let queja"> {{ queja.descripcion }} </mat-cell>
+      </ng-container>
+
+      <!-- Columna Estatus -->
+      <ng-container matColumnDef="estatus">
+        <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
+        <mat-cell *matCellDef="let queja"> {{ queja.estatus }} </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

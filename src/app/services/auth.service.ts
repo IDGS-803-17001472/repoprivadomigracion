@@ -12,6 +12,7 @@ import { Paciente } from '../interfaces/paciente';
 import { ChangePasswordRequest } from '../interfaces/change-password-request';
 import { UpdatePacienteDto } from '../interfaces/UpdatePacienteDto';
 import { DiariosPaciente } from '../interfaces/entrada';
+import { Queja } from '../interfaces/queja';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,15 @@ export class AuthService {
       );
   }
 
+  obtenerQuejas(): Observable<Queja[]> {
+    return this.http.get<Queja[]>(`${this.apiUrl}Queja/profesional/quejas`);
+  }
 
 
 
-  
+  registrarQueja(queja: Queja): Observable<Queja> {
+    return this.http.post<Queja>(`${this.apiUrl}Queja/profesional/registrar`, queja);
+  }
 
   register(data: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}account/register`, data);

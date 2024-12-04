@@ -58,7 +58,7 @@ export class AgregarPacienteComponent {
       next: (response) => {
         console.log(response);
 
-        this.matSnackbar.open(response.message, 'Close', {
+        this.matSnackbar.open(response.message, 'Cerrar', {
           duration: 5000,
           horizontalPosition: 'center',
         });
@@ -66,7 +66,7 @@ export class AgregarPacienteComponent {
       error: (err: HttpErrorResponse) => {
         if (err!.status === 400) {
           this.errors = err!.error;
-          this.matSnackbar.open('Validations error', 'Close', {
+          this.matSnackbar.open('Errores de Validacion', 'Cerrar', {
             duration: 5000,
             horizontalPosition: 'center',
           });
