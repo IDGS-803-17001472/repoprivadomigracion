@@ -119,8 +119,8 @@ export class AppSideRegisterComponent {
       reader.readAsDataURL(file); // Convierte a Base64
     }
   }
-  
-    
+
+
   get f() {
     return this.registerForm.controls;
   }
@@ -147,7 +147,7 @@ export class AppSideRegisterComponent {
       error: (err: HttpErrorResponse) => {
         if (err!.status === 400) {
           this.errors = err!.error;
-          this.matSnackbar.open('Validations error', 'Close', {
+          this.matSnackbar.open('Errores de validación', 'Close', {
             duration: 5000,
             horizontalPosition: 'center',
           });

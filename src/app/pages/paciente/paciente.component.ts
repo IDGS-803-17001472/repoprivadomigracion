@@ -35,7 +35,7 @@ import { VincularPorCodigoDialogComponent } from './vincular-por-codigo-dialog.c
 })
 
 export class PacienteComponent {
-  
+
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   routerr = inject(Router);
@@ -62,11 +62,11 @@ export class PacienteComponent {
 
 
 
-  displayedColumns1: string[] = ['assigned', 'name', 'priority', 'budget'];
+  displayedColumns1: string[] = ['assigned', 'name', 'priority'];
 
 
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private dialog: MatDialog // Inyección de MatDialog
     ) {}
 
@@ -152,7 +152,7 @@ setPage(page: number, filteredPacientes: Paciente[] = this.pacientes) {
   this.currentPage = page;
   const startIndex = (this.currentPage - 1) * this.pageSize;
   this.paginatedPacientes = filteredPacientes.slice(startIndex, startIndex + this.pageSize);
-  
+
   console.log(this.paginatedPacientes);
 }
 

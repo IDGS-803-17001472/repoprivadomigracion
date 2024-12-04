@@ -34,14 +34,14 @@ export class HeaderComponent {
   @Output() toggleCollapsed = new EventEmitter<void>();
 
 
-  
+
   ngOnInit() {
     this.getData();
   }
 
   logout = () => {
     this.authService.logout();
-    this.matSnackBar.open('Logout success', 'Close', {
+    this.matSnackBar.open('Sesión Cerrada', 'Close', {
       duration: 5000,
       horizontalPosition: 'center',
     });

@@ -5,7 +5,7 @@ export interface UserDetail {
     roles: string[];
     telefono: string;
     sexo: string;
-    fechaNacimiento: Date;
+    fechadeNacimiento: Date;
     estadoCivil: string;
     titulo: string;
     ocupacion: string;

@@ -22,7 +22,7 @@
                   />
                   <mat-icon *ngIf="!imgSrc" class="profile-placeholder">person</mat-icon>
                 </div>
-    
+
                 <!-- Lista de datos personales -->
                 <mat-list>
                   <mat-list-item>
@@ -35,7 +35,7 @@
                   </mat-list-item>
                   <mat-list-item>
                     <span matListItemTitle class="f-s-16 f-w-600">Fecha de Nacimiento</span>
-                    <span matListItemLine class="mat-body-1">{{ userDetail?.fechaNacimiento | date }}</span>
+                    <span matListItemLine class="mat-body-1">{{ userDetail?.fechadeNacimiento | date }}</span>
                   </mat-list-item>
                   <mat-list-item>
                     <span matListItemTitle class="f-s-16 f-w-600">Estado Civil</span>
@@ -71,7 +71,7 @@
                   </mat-list>
                 </mat-card-content>
               </mat-card>
-              </div>    
+              </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -99,4 +99,3 @@
       </div>
     </mat-card-content>
   </mat-card>
-  
