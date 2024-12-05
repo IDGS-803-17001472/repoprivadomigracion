@@ -14,10 +14,11 @@ import esLocale from '@fullcalendar/core/locales/es';
     templateUrl: './cita-principal.component.html',
     styleUrls: ['./cita-principal.component.scss']
 })
-export class CitaPrincipalComponent implements OnInit {  
+export class CitaPrincipalComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
+    locale: esLocale, // Establecer idioma a español
     events: [],
     eventClick: this.handleEventClick.bind(this),
     dateClick: this.handleDateClick.bind(this)

@@ -28,7 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
         MatDatepickerModule, MatButtonModule,MatNativeDateModule
     ],
     providers: [
-        
+
     ],
     templateUrl: './agregar-paciente.component.html',
     styleUrl: './agregar-paciente.component.scss'
@@ -73,14 +73,12 @@ export class AgregarPacienteComponent {
         }
       },
       complete: () => {console.log('Register success');
-        
-    this.router.navigate(['paciente']);
+
       },
     });
   }else{
     console.log('Formulario no válido');
     this.logFormErrors();
-    this.ngOnInit();
   }
   }
 
@@ -196,7 +194,6 @@ export class AgregarPacienteComponent {
         return;
       }
 
-      this.selectedFileName = input.files[0].name; // Guarda el nombre del archivo
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.result) {
@@ -213,7 +210,7 @@ export class AgregarPacienteComponent {
       reader.readAsDataURL(file); // Convierte a Base64
     }
   }
-  
+
 
   updateForm(): void {
     if (this.base64Image) {

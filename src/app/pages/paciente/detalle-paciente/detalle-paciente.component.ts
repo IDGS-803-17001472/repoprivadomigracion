@@ -37,7 +37,7 @@ registerLocaleData(localeEs, 'es');
     MatDatepickerModule,
     MatNativeDateModule, MatListModule, MatIconModule, MaterialModule, FechaHoraPipe],
     providers: [
-        MatDatepickerModule,FechaHoraPipe,  { provide: LOCALE_ID, useValue: 'es' } 
+        MatDatepickerModule,FechaHoraPipe,  { provide: LOCALE_ID, useValue: 'es' }
     ],
     templateUrl: './detalle-paciente.component.html',
     styleUrl: './detalle-paciente.component.scss'
@@ -93,13 +93,10 @@ export class DetallePacienteComponent  implements OnInit {
         console.log('citas:', this.citas);
       },
       error: (error) => {
-        this.matSnackBar.open('Error al cargar las citas: ' + error.message, 'Close', {
-          duration: 5000,
-          horizontalPosition: 'center',
-        });
+
       },
     });
-    
+
   }
 
   calcularEdad(fechaNacimiento?: Date ): number | null {
